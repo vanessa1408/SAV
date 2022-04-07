@@ -42,6 +42,7 @@ header {
     padding:0;
     padding-left:1vh;
     border: 1px solid #c0c0c3;
+    font-size:2.5vh;
 }
 
 .search-bar {
@@ -64,10 +65,12 @@ header {
     margin-left:0;
 }
 
-.bi-search {
+.bi.bi-search {
     color:#3d509d;
-
+    margin:0;
+    padding:0;
 }
+
 
 .loupe {
     border-top-right-radius: 20%;
@@ -75,6 +78,14 @@ header {
     border-top-left-radius: 0%;
     border-bottom-left-radius: 0%;
     border: 1px solid #c0c0c3;
+}
+
+.col-2.col-sm-1.text-start {
+    padding-left:0;
+}
+
+.col-10.col-sm-11.text-end {
+    padding-right:0;
 }
 
 /*  NAVIGATION  */

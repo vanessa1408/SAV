@@ -3,4 +3,13 @@
     .logoD,.logoG {
         width:auto;
     }
+
+
+    .col-lg-1.text-start {
+        padding-left:0;
+    }
+    
+    .col-lg-11.text-end {
+        padding-right:0;
+    }
 }
