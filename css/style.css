@@ -79,7 +79,8 @@ header {
 	border:1px solid #fdbc0a;
 	display:inline-block;
 	cursor:pointer;
-	color:#000;
+	color:#3d509d;
+    font-weight: bold;
 	font-family:calibri;
 	font-size:1.2em;
 	padding:0.8em;
@@ -164,7 +165,7 @@ header {
        margin-right: 25%;
        margin-top: 2vh;
        margin-bottom: 0;
-       display: inline;
+
 
    }
 
