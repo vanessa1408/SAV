@@ -1,8 +1,23 @@
 @media (min-width:768px) and (max-width: 992px) {
     
+    /** HEADER **/
+    .logoD,.logoG {
+        width:auto;
+    }
+
+    .logoD{
+        padding-top: 2vh;
+    }
+    
     /** MENU TOP **/
     .myButton {
         font-size : 2.5vh;
+    }
+
+    .menu-top.text-center a{
+        height:6vh;
+        padding:0.8em;
+        padding-top:0;
     }
     
     /** RECHERCHE TOP **/

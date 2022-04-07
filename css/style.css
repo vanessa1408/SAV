@@ -2,6 +2,14 @@
 * {
     font-family: calibri;
 }
+
+.col-8 {
+    width:66%;
+}
+
+.col-4 {
+    width:33%;
+}
  
  /* header */
 
@@ -9,11 +17,11 @@ header {
     margin: 0.5 0 0.5 em;
 }
 
-.logo {
+.logoD,.logoG {
     width:100%;
 }
 
-.col-8.logoD{
+.col-8.logoG{
     padding-left:1em;
     padding-top: 1em;
 }
