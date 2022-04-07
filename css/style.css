@@ -72,22 +72,22 @@ header {
 /*  NAVIGATION  */
 
 .myButton {
-	box-shadow:inset -1px 2px 0px 0px #54a3f7;
-	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
-	background-color:#007dc1;
+	box-shadow:inset -1px 2px 0px 0px #f3e51a;
+	background:linear-gradient(to bottom, #f3e51a 5%, #fdbc0a 100%);
+	background-color:#f3e51a;
 	border-radius:3px;
-	border:1px solid #124d77;
+	border:1px solid #fdbc0a;
 	display:inline-block;
 	cursor:pointer;
-	color:#ffffff;
+	color:#000;
 	font-family:calibri;
 	font-size:1.2em;
 	padding:0.8em;
 	text-decoration:none;
-	text-shadow:-1px 1px 34px #3d509d;
+	text-shadow:-1px 1px 34px #fdbc0a;
 }
 .myButton:hover {
-	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background:linear-gradient(to bottom, #0061a7 5%, #242f5c 100%);
 	background-color:#242f5c; color:#fff;
 }
 .myButton:active {
