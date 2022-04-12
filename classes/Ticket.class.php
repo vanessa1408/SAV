@@ -11,7 +11,9 @@ class Ticket {
     private $IdTechnicien;
     private $IdTechnicien_1;
 
-    public function __construct()
+    public function __construct(int $IdTicket, date $DateAppelClient,'DatePEC','DateFermTicket','IdType','IDTypeInter','IdCommande','IdTechnicien','IdTechnicien_1'){
+
+    }
 
 }
 
