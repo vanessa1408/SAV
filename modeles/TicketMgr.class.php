@@ -1,18 +1,18 @@
 <?php 
 
-    require_once("classes/TicketMgrException.class.php");
-    require_once("classes/DbSav.class.php");
+
     class TicketMgr {
-
-
 
         public static function getListeTickets(int $typageRet = PDO::FETCH_CLASS ){
             // Préparation de la requête SQL
-            $sql="SELECT * FROM ticketsav";
+            $sql="SELECT idTicket, c.NomClient, c.PrénomClient, k.IdCommande
+            FROM ticketsav t
+            JOIN commande k ON k.IdCommande = t.IdCommande
+            JOIN client c ON c.IdCLient = k.IdCLient";
             // Connexion
             $listTickets = DbSav::getConnexion()->query($sql);
             if($typageRet===PDO::FETCH_CLASS){
-                include ("classes/Ticket.class.php");
+                include ("../classes/Ticket.class.php");
                 $listTickets->setFetchMode(
                     PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,
                     "ticketsav",

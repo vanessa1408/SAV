@@ -9,7 +9,7 @@ class DbSav {
 	// fonction de connexion à la BDD
     private static function connect() {
         // Récupérer les paramètres de la BDD avec les sections
-        $tParam = parse_ini_file("param/param.ini", true); 
+        $tParam = parse_ini_file("../param/param.ini", true); 
         
         // Crée dynamiquement les variables équivalentes 
         // aux clés de tParam pour la section "BDD"
@@ -20,7 +20,7 @@ class DbSav {
                . "; dbname=" . $dbname . "; charset=utf8";
         
 		try {
-			$mysqlPDO = new PDO($dsn, $user, $password,
+			$mysqlPDO = new PDO($dsn, $user, $pwd,
 							array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 		} catch(Exception $e) { 
 			// en cas erreur on affiche un message et on arrete tout
@@ -34,15 +34,15 @@ class DbSav {
 
 	// fonction de 'déconnexion' de la BDD
     public static function disconnect(){
-        DbAirDi::$connexion = null;
+        DbSav::$connexion = null;
     }
 
     // Pattern singleton
     public static function getConnexion() {
-        if (DbAirDi::$connexion != null) {
-            return DbAirDi::$connexion;
+        if (DbSav::$connexion != null) {
+            return DbSav::$connexion;
         } else {
-            return DbAirDi::connect();
+            return DbSav::connect();
         }
     }
 }
