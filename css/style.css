@@ -1,4 +1,4 @@
-
+@media (max-width:767px) {
 * {
     font-family: calibri;
 }
@@ -9,9 +9,6 @@ header {
     margin: 0.5 0 0.5 em;
 }
 
-.logo {
-    width:100%;
-}
 
 .col-8.logoD{
     padding-left:1em;
@@ -98,7 +95,7 @@ header {
 
 /*  MAIN */
 
-.main {
+.main-accueil {
     margin-top:1vh;
 }
 
@@ -193,3 +190,4 @@ header {
    .page-item {
        font-size: 2vh;
    }
+}
