@@ -15,6 +15,6 @@
 </head>
 <body>
     <header class="row">
-        <div class="col-8 logoD text-center"><img src="../img/MenuizMan.png" alt="Logo MenuizMan" class="logo"/></div>
-        <div class="col-4 text-center navbar-text"><img src="../img/sav.png" alt="Logo SAV" class="logo"/></div>
+        <div class="col-8 logoD"><img src="../img/MenuizMan.png" alt="Logo MenuizMan" class="logo"/></div>
+        <div class="col-4 text-center"><img src="../img/sav.png" alt="Logo SAV" class="logo"/></div>
     </header>

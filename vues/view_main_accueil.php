@@ -1,4 +1,4 @@
-<div class="main-accueil">
+<div class="main-accueil mx-auto">
         <div class="list-group">
             <a href="#" class="list-group-item list-group-item-action active title-list" aria-current="true">
             Dossiers en cours

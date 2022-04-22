@@ -1,4 +1,3 @@
-@media (max-width:767px) {
 * {
     font-family: calibri;
 }
@@ -190,4 +189,3 @@ header {
    .page-item {
        font-size: 2vh;
    }
-}
