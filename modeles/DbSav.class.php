@@ -9,7 +9,7 @@ class DbSav {
 	// fonction de connexion à la BDD
     private static function connect() {
         // Récupérer les paramètres de la BDD avec les sections
-        $tParam = parse_ini_file("../param/param.ini", true); 
+        $tParam = parse_ini_file("param/param.ini", true); 
         
         // Crée dynamiquement les variables équivalentes 
         // aux clés de tParam pour la section "BDD"

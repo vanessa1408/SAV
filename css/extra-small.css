@@ -1,0 +1,25 @@
+@media (max-width: 767px) {
+    
+    .text-center.logo {
+        display:none;
+    }
+    .text-center.logosmall {
+        display:inline;
+    }
+
+    .myButton {
+        height: 3vh;
+       	padding:0;
+           width: 30%;
+           font-size:0.9em ;
+    }
+
+    .myButton>a {
+        padding:0;
+       
+    }
+
+.menu-top{
+        padding: 0;
+    }
+}

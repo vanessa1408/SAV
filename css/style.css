@@ -9,27 +9,10 @@ header {
 }
 
 
-.col-8.logoD{
-    padding-left:1em;
-    padding-top: 1em;
-}
-
-.logoSAV {
-    padding: 10vh;
-}
-
-.menu-top {
-    margin-top : 0.8em;
-}
-
 /* Recherche top */
 
-.recherche {
-    width:100%;
-}
-
 .input-search {
-    width:100%;
+    width:80%;
     height: 100%;
     padding:0;
     padding-left:1vh;
@@ -37,37 +20,26 @@ header {
 }
 
 .search-bar {
-    margin-top:1em;
-    margin-left:0.5em;
-    margin-right:0.5em;
-    margin-bottom: 1em;
-}
-
-.col-10.nav { 
-    width:83%;
-    padding-right:0px;
-    margin-right: 0;
-    padding-left:1vh ;
-}
-
-.col-2.nav {
-    width:17%;
-    padding-left:0;
-    margin-left:0;
+    padding-top: 2vh;
+    padding-left: 5vh;
+    padding-right: 5vh;
+    padding-bottom: 2vh;
 }
 
 .bi-search {
     color:#3d509d;
-
 }
 
-.loupe {
-    border-top-right-radius: 20%;
-    border-bottom-right-radius: 20%;
-    border-top-left-radius: 0%;
-    border-bottom-left-radius: 0%;
-    border: 1px solid #c0c0c3;
+.text-center.logo {
+    display:block;
 }
+.logo>img{
+    text-align: center;
+}
+.logosmall {
+    display:none;
+}
+
 
 /*  NAVIGATION  */
 
@@ -95,6 +67,7 @@ header {
 	position:relative;
 	top:1px;
 }
+
 
 /*  MAIN */
 
