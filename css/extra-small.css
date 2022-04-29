@@ -1,4 +1,4 @@
-@media (max-width: 767px) {
+@media (max-width: 480px) {
     
     .text-center.logo {
         display:none;
@@ -24,11 +24,47 @@
        
     }
 
-.menu-top{
-        padding: 0;
+    .menu-top{
+            padding: 0;
+        }
+
+    .list-group-item-action>text {
+        font-size: 1vh;
     }
 
-.list-group-item-action>text {
-    font-size: 1vh;
-}
+    /**** Connexion ******/
+    #logo {
+        max-width: 80vw;
+        max-height: auto;
+        justify-content: center;
+    }
+    h1 {
+        margin-left : 10vw;
+        font-size : 5vw;
+    }
+    label {
+        font-size : 5vw;
+    }
+    #label1 {
+        margin-left : 27.5vw;
+    }
+    #label2 {
+        margin-left : 30vw;
+    }
+    #login {
+        margin-left : 20vw;
+        margin-top : 2vh;
+        margin-bottom : 2vh;
+    }
+    #password {
+        margin-left : 20vw;
+        margin-top : 2vh;
+        margin-bottom : 2vh;
+    }
+
+    #connecter{
+        margin-left : 32.5vw;
+    }
+
+
 }
