@@ -1,15 +1,9 @@
 @media (min-width:1200px) {
-    
-    .logoD,.logoG {
-        width:10%;
-    }
+    /* .logo {
+      width: 50%;  
+    }  */
 
-
-    .col-lg-1.text-start {
-        padding-left:0;
-    }
-    
-    .col-lg-11.text-end {
-        padding-right:0;
+    .main-accueil {
+        width:80%;
     }
 }

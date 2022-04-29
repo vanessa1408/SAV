@@ -3,12 +3,10 @@ var btnValidez = document.getElementById("myBtn2");
 
 btnValidez.addEventListener("click", ouvrir);
 
-
-$(document).ready(function () {
-    $("#myBtn").click(function () {
-        $("#myModal").modal();
-    });
-});
+function showPopup()
+{
+  document.getElementById("myModal").display = "block";
+}
 
 function ouvrir() {
 }
