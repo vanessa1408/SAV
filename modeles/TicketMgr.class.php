@@ -9,7 +9,7 @@
             FROM ticketsav t
             JOIN commande k ON k.IdCommande = t.IdCommande
             JOIN client c ON c.IdCLient = k.IdCLient
-            JOIN type_dossier td ON td.IdType = t.IdType";
+            JOIN type_dossier td ON td.IdTypeDossier = t.IdTypeDossier";
             // Connexion
             $listTickets = DbSav::getConnexion()->query($sql);
             if($typageRet===PDO::FETCH_CLASS){
@@ -17,7 +17,7 @@
                 $listTickets->setFetchMode(
                     PDO::FETCH_CLASS|PDO::FETCH_PROPS_LATE,
                     "ticketsav",
-                    array('IdTicket', 'DateAppelClient','DatePEC','DateFermTicket','IdType','IDTypeInter','IdCommande','IdTechnicien','IdTechnicien_1'));
+                    array('IdTicket', 'DateAppelClient','DatePEC','DateFermTicket','Motif','Observations','	IdDiag','IdTypeDossier','IDTypeInter','IdCommande','IdTechnicien'));
                 $tabTicket = $listTickets->fetchAll();
     
             } else {

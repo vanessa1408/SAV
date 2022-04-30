@@ -1,4 +1,4 @@
-@media (min-width:768px) and (max-width: 992px) {
+@media (min-width:480px) and (max-width: 992px) {
     
     /** MENU TOP **/
     .myButton {
@@ -17,5 +17,33 @@
 
     .bi.bi-folder-fill{
         width: 5vh;
+    }
+
+    /*********** Connexion ***************/
+
+    
+    label {
+        font-size : 4vw;
+    }
+    #label1 {
+        margin-left : 27.5vw;
+    }
+    #label2 {
+        margin-left : 30vw;
+    }
+    #login {
+        margin-left : 30vw;
+        margin-top : 2vh;
+        margin-bottom : 2vh;
+    }
+    #password {
+        margin-left : 30vw;
+        margin-top : 2vh;
+        margin-bottom : 2vh;
+    }
+   
+    #connecter{
+        margin-left : 32.5vw;
+        font-size : 1.2em;
     }
 }
