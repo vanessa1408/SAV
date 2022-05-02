@@ -1,5 +1,6 @@
 <?php
 
+
 if(isset($_POST['login'])){
     DbSav::getConnexion();
 }
@@ -17,7 +18,7 @@ class DbSav {
     private static function connect() {
 
         // Récupérer les paramètres de la BDD avec les sections
-        $tParam = parse_ini_file("../param/param.ini", true); 
+        $tParam = parse_ini_file("param/param.ini", true); 
         
         // Crée dynamiquement les variables équivalentes 
         // aux clés de tParam pour la section "BDD"
@@ -26,15 +27,13 @@ class DbSav {
         $dsn = "mysql:host=" . $hote 
                . "; port=" . $port
                . "; dbname=" . $dbname . "; charset=utf8";
-        $user = $_POST['login'];
-        $password = $_POST['password'];
-
-        
+ 
 		try {
-			$mysqlPDO = new PDO($dsn, $user, $password);
+			$mysqlPDO = new PDO($dsn, $user, $pwd,
+							array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
             $mysqlPDO->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Vous êtes connecté à la base de données {$user}";
-            header("location:../index.php?action=accueil");
+            // echo "Vous êtes connecté à la base de données {$user}";
+            // header("location:index.php?action=accueil");
 		} catch(Exception $e) { 
 			// en cas erreur on affiche un message et on arrete tout
 			die('<h1>Erreur de connexion : </h1>' . $e->getMessage());
