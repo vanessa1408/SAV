@@ -1,6 +1,6 @@
+
 <h1>Connexion au serveur SAV</h1>
-    <form name="login" action="modeles/DbSav.class.php"  method="POST">
-        <input type="hidden" name="action" value="accueil">
+    <form name="login" action="modeles/connexion.php"  method="POST">
         <label id="label1">Nom d'utilisateur</label> 
         <br/>
         <input type="text" name="login" id="login" placeholder="Login" required="required">
