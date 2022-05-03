@@ -17,14 +17,21 @@
             <p><label class="label-dossier" for="motif">Motif du dossier : </label><input name="motif" type="text" disabled="disabled" value="<?php echo $infosTicket->Motif; ?>"></p>
             <p><label class="label-dossier" for="observation">Observation : </label>
             <textarea name="observation"class="form-control" aria-label="With textarea" disabled="disabled"><?php echo $infosTicket->Observations; ?></textarea></p>
+<<<<<<< HEAD
     </div>   
     <div class="infos-dossier">
             <legend class="list-group-item list-group-item-action active title-list">Client<input class="float-end" type="button" value="Modifier"></legend></p>
+=======
+        </div>   
+         <div class="infos-dossier">
+            <legend class="list-group-item list-group-item-action active title-list">Client</legend></p>
+>>>>>>> 385b357a3d6aaa5a79b268cc12ba47724afc7824
             <p><label class="label-dossier" for="nom">Nom : </label><input name="nom" type="text" disabled="disabled" value="<?php echo $infosClient->NomClient ?>">
             <label class="label-dossier-droite" for="prenom">Prénom : </label><input name="prenom" type="text" disabled="disabled" value="<?php echo $infosClient->PrénomClient ?>"></p>
             <p><label class="label-dossier" for="adresse">Adresse : </label><input name="adresse" type="text" disabled="disabled" value="<?php echo $infosClient->AdresseClient ?>"></p>
             <p><label class="label-dossier" for="cp">CP : </label><input name="cp" type="text" disabled="disabled" value="<?php echo $infosClient->CPClient ?>">
             <label class="label-dossier-droite" for="ville">Ville : </label><input name="ville" type="text" disabled="disabled" value="<?php echo $infosClient->VilleClient ?>"></p>
+<<<<<<< HEAD
     </div>       
          
     <div class="infos-dossier">
@@ -32,3 +39,12 @@
             <p><label class="label-dossier" for="obs">Observation : <input name="obs" type="text" disabled="disabled" value="<?php echo $infosTicket->LibDiagnostic; ?>"></p>
             <p><label class="label-dossier" for="datediag">Effectué le : <input name="datediag" type="date" disabled="disabled" value="<?php echo $infosTicket->DateDiag ?>"></p>
     </div>
+=======
+         </div>       
+         
+         <div class="infos-dossier">
+            <legend class="list-group-item list-group-item-action active title-list">Diagnostic</legend></p>
+            <p><label class="label-dossier" for="obs">Observation : <input name="obs" type="text" disabled="disabled" value="<?php echo $infosTicket->LibDiagnostic; ?>"></p>
+            <p><label class="label-dossier" for="datediag">Effectué le : <input name="datediag" type="date" disabled="disabled" value="<?php echo $infosTicket->DateDiag ?>"></p>
+         </div>
+>>>>>>> 385b357a3d6aaa5a79b268cc12ba47724afc7824
