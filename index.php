@@ -13,9 +13,7 @@ var_dump($_POST);
  
             // Initialisation des données
 
-            // $action = 'connexion';
-            $action = 'accueil';
-
+           
             session_start();
  
             // Initialisation des données
@@ -38,13 +36,18 @@ var_dump($_POST);
             if(isset($_POST['refArticle'])){
                 $numArt = $_POST['refArticle'];
             }
+            if(isset($_POST['codePostal'])){
+                $CPclient = $_POST["codePostal"];
+            }
             if(isset($_GET['IdClient'])){
                 $id = $_GET['IdClient'];
             }
             if(isset($_SESSION['login'])){
-               $login = $_SESSION['login'];
+                $login = $_SESSION['login'];
             }
-
+            if(isset($_GET['IdCommande'])){
+                $idcmd = $_GET['IdCommande'];
+            }
 
 
             switch ($action){
@@ -104,7 +107,8 @@ var_dump($_POST);
                     require ('vues/view_footer.php');
                 break;
                 case 'rechercheMaj' :
-                    $affichage = $_POST['nomClient']." ".$_POST['Ncmd']." ".$_POST['refArticle'];
+                    $affichage = $_POST['nomClient']." ".$_POST['Ncmd']." ".$_POST['refArticle']
+                    .$_POST['codePostal'];
                     if ($nom <> ""){
                         $resultatNom = Recherche_Dossier::getListClients($nom);
                     }
@@ -114,13 +118,21 @@ var_dump($_POST);
                     elseif ($numArt <> ""){
                         $resultatArt = Recherche_Dossier::getArticle($numArt); 
                     }
+                    elseif ($CPclient <> ""){
+                        $resultatCP = Recherche_Dossier::getCodepostal($CPclient);
+                    }
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
                     require ('vues/view_result_recherche.php');
                     require ('vues/view_footer.php');
                     break;
                 case 'afficheClient' :
-                    $donnee = ClientMgr::getInfoClient($id);
+                if (isset($_GET['IdClient'])){
+                        $donnee = ClientMgr::getInfoClient($id);
+                    }
+                    else {
+                        $donnee2 = ClientMgr::getInfoClientByArt($idcmd);
+                    }
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
                     require ('vues/view_dossierClient.php');
@@ -134,6 +146,12 @@ var_dump($_POST);
                     require('vues/view_nav.php');
                     require ('vues/view_ticket.php');
                     require('vues/view_footer.php');
+                    break;
+                case 'afficheCMD' :
+                    require ('vues/view_header.php');
+                    require ('vues/view_nav_modal.php');
+                    require ('vues/view_modal.php');
+                    require ('vues/view_footer.php');
                     break;
                 }
 ?>

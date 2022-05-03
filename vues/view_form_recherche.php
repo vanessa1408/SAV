@@ -12,11 +12,11 @@
             <label for="refArticle" class="form-label">Reference de l'article</label>
             <input type="text" class="form-control" name="refArticle" placeholder="Recherchez un client par N° Article...">
         </div>
-        <!-- <div class="mb-3">
+        <div class="mb-3">
             <label for="codePostal" class="form-label">Code Postal</label>
             <input type="text" class="form-control" name="codePostal" placeholder="Recherchez un client par Code postal...">
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="VilleClient" class="form-label">Ville</label>
             <input type="text" class="form-control" name="VilleClient" placeholder="Recherchez un client par Ville...">
         </div> -->

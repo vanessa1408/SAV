@@ -5,38 +5,37 @@
             </a>
 
         <?php foreach ($infosTicket as $key => $tTicket) {
-                        $idTicket = $tTicket[0];
-                        $dateAppelClient = $tTicket[1];
-                        $datePEC = $tTicket[2];
-                        $dateFermTicket = $tTicket[3];
-                        $motif = $tTicket[4];
-                        $observation = $tTicket[5];
-                        $idDiagnostic = $tTicket[6];
-                        $idTypeDossier = $tTicket[7];
-                        $idTypeInter = $tTicket[8];
-                        $idCommande = $tTicket[9];
-                        $idTechnicien = $tTicket[10];
+                        $IdTicket = $tTicket[0];
+                        $DateAppelClient = $tTicket[1];
+                        $DatePEC = $tTicket[2];
+                        $DateFermTicket = $tTicket[3];
+                        $Motif = $tTicket[4];
+                        $Observation = $tTicket[5];
+                        $IdDiagnostic = $tTicket[6];
+                        $IdTypeDossier = $tTicket[7];
+                        $IdTypeInter = $tTicket[8];
+                        $IdCommande = $tTicket[9];
+                        $IdTechnicien = $tTicket[10];
                         // $motif = $tTicket[11];
-                        $idTechnicien = $tTicket[12];
-                        $statutCommande = $tTicket[13];
-                        $idClient = $tTicket[14];
-                        $idFacture = $tTicket[15];
+                        // $IdTechnicien = $tTicket[12];
+                        $StatutCommande = $tTicket[13];
+                        $IdClient = $tTicket[14];
+                        $IdFacture = $tTicket[15];
                         // $motif = $tTicket[16];
-                        $nomClient = $tTicket[17];
-                        $prenomClient = $tTicket[18];
-                        $idAdresse = $tTicket[19];
-                        $adresseClient = $tTicket[20];
-                        $cpClient = $tTicket[21];
-                        $villeClient = $tTicket[22];
+                        $NomClient = $tTicket[17];
+                        $PrenomClient = $tTicket[18];
+                        $IdAdresse = $tTicket[19];
+                        $AdresseClient = $tTicket[20];
+                        $CPClient = $tTicket[21];
+                        $VilleClient = $tTicket[22];
                         // $motif = $tTicket[23];
                     }
 
-                        echo '<div class="champsTicket" >Date de création du dossier : ' . $dateAppelClient . "<br/>";
-                        echo '<a href="#">Commande concernée : ' . $idCommande . '</a><br/><hr>';
-                        echo '<p>Date de prise en charge du SAV : ' . $datePEC . "</p><br/>";
-                        echo '<p>Motif du dossier : ' . $motif . "</p><br/>";
-                        echo '<p>Observation: ' . $observation . "</p><br/>";
+                        echo '<div class="champsTicket" >Date de création du dossier : ' . $DateAppelClient . "<br/>";
+                        echo '<a href="index.php?action=afficheCMD&IdCommande='.$IdCommande.'">Commande concernée : ' . $IdCommande . '</a><br/><hr>';
+                        echo '<p>Date de prise en charge du SAV : ' . $DatePEC . "</p><br/>";
+                        echo '<p>Motif du dossier : ' . $Motif . "</p><br/>";
+                        echo '<p>Observation: ' . $Observation . "</p><br/>";
                         
-
 
                 ?>
