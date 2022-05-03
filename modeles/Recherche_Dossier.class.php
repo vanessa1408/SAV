@@ -27,9 +27,17 @@
         public static function getArticle ($numArt)
         {
             $connexion = DbSav::getConnexion();
-            $resultat = $connexion->query("SELECT * FROM `article` WHERE IdArticle LIKE '$numArt'");
+            $resultat = $connexion->query("SELECT * FROM `article` JOIN contenir ON contenir.IdArticle = article.IdArticle WHERE article.IdArticle LIKE '$numArt'");
             $tab = $resultat->fetchAll();
             return $tab;
         }
         
+        public static function getCodepostal ($CodePostal)
+        {
+            $connexion = DbSav::getconnexion();
+            $resultat = $connexion->query("SELECT adresse.IdAdresse, adresse.AdresseClient, Adresse.CPClient, Adresse.VilleClient, adresse.IdClient, client.NomClient, client.PrénomClient 
+                                            FROM `adresse` JOIN client ON adresse.IdClient = client.IdClient WHERE CPClient LIKE '$CodePostal'");
+            $tab = $resultat->fetchAll();
+            return $tab;
+        }
     }

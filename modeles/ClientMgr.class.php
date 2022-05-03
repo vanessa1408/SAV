@@ -13,4 +13,14 @@ class ClientMgr{
         $tab = $resultat->fetchAll();
         return $tab;
     }
+    public static function getInfoClientByArt($idcmd){
+        $connexion = DbSav::getConnexion();
+        $resultat = $connexion->query("SELECT client.IdClient, client.NomClient, client.PrénomClient, commande.IdCommande, adresse.AdresseClient, adresse.VilleClient, adresse.CPClient
+        FROM `client` 
+        JOIN commande ON client.IdClient = commande.IdClient
+        JOIN adresse ON client.IdClient = adresse.IdClient 
+        WHERE commande.IdCommande = '$idcmd'");
+        $tab = $resultat->fetchAll();
+        return $tab;
+    }
 }

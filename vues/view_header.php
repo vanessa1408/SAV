@@ -15,6 +15,11 @@
 </head>
 <body>
     <header>
-        <div class="text-center logo"><img src="img/MenuizMan.png" alt="Logo MenuizMan"/></div>
-       <div class="text-center logosmall"><img src="img/MenuizMan2.png" alt="Logo MenuizMan"/></div>
+        <div class="row"> 
+        <?php if ($action != 'connexion'){?><div class="connexion text-end"><i class="bi bi-person-circle"></i><?php echo " " . $login ?> est connecté(e) !
+            <br/><a href="index.php?action=deconnexion"><i class="bi bi-x-circle-fill">Se déconnecter</i></a></div><?php } ?>
+            <div class="text-center logo"><a href="index.php?action=accueil"><img src="img/MenuizMan.png" alt="Logo MenuizMan"/></a></div>
+            <div class="text-center logosmall"><a href="index.php?action=accueil"><img src="img/MenuizMan2.png" alt="Logo MenuizMan"/></a></div>
+            
+        </div>
     </header>

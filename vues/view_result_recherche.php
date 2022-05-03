@@ -23,10 +23,10 @@
                             $IdClient = $tCMD [3];
                             $IdFacture = $tCMD [4];
                             $NomClient = $tCMD [5];
-                            $PrenomClient = $tCMD [6];
-                            echo '<a href="index.php?action=afficheClient" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
+                            $PrénomClient = $tCMD [6];
+                            echo '<a href="index.php?action=afficheClient&IdClient='.$IdClient.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
                             "N° Commande : ". $IdCommande . " -- Date de commande : " . $DateCommande .
-                            " -- Statut : ". $StatutCommande. "   // Commandé par ". $NomClient. " " .$PrenomClient." ".
+                            " -- Statut : ". $StatutCommande. "   // Commandé par ". $NomClient. " " .$PrénomClient." ".
                             '<p class="type-dossier"></p></a>';
                         }
                     } elseif (strlen($numArt > 0)) {
@@ -36,10 +36,27 @@
                             $StockPhysiqueArticle = $tArt [2];
                             $StockRebusArticle = $tArt [3];
                             $StockSAVArticle = $tArt [4];
-                            echo '<a href="index.php?action=afficheClient" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
-                            "Nom de l'article : ". $NomArticle  . " -- Référence : " . $IdArticle . " -- Stock Principal : ". $StockPhysiqueArticle. " ".
-                            " -- Stock Rebus : ". $StockRebusArticle . " -- Stock SAV : " . $StockSAVArticle . " ".
+                            $IdCommande = $tArt [5];
+                            $IdArticle = $tArt [6];
+                            $Garantie = $tArt [7];
+                            $QteCOmART = $tArt [8];
+                            $QteExpArt = $tArt [9];
+                            echo '<a href="index.php?action=afficheClient&IdCommande='.$IdCommande.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
+                            "Nom de l'article : ". $NomArticle  . " -- Référence : " . $IdArticle . " -- Commande : ". $IdCommande . " ".
                             '<p class="type-dossier"></p></a>';
                         }
+                    } elseif (strlen($CPclient > 0)) {
+                        foreach ($resultatCP as $keyCPC => $tCPC){
+                            $IdAdresse = $tCPC [0];
+                            $AdresseClient = $tCPC [1];
+                            $CPClient = $tCPC [2];
+                            $VilleClient = $tCPC [3];
+                            $IdClient = $tCPC [4];
+                            $NomClient = $tCPC [5];
+                            $PrénomClient = $tCPC [6];
+                            echo '<a href="index.php?action=afficheClient&IdClient='.$IdClient.'"class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'
+                            .$NomClient . " " . $PrénomClient . " ".'<p class="type-dossier"></p></a>';
+                        }
                     }
+                    
     ?> 
