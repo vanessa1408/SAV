@@ -4,6 +4,7 @@
 
             require_once("modeles/DbSav.class.php");
             require_once("modeles/TicketMgr.class.php");     
+            require_once("modeles/ClientMgr.class.php");
             require_once("classes/TicketMgrException.class.php");
  
             // Initialisation des données
@@ -68,7 +69,10 @@
                     break;
                 case 'affTicket' :
                     $idTicket = $_GET['id'];
-                    $infosTicket=TicketMgr::getInfosTicket($idTicket);
+                    $idCommande = $_GET['idCommande'];
+                    $modeobjet = PDO::FETCH_OBJ;
+                    $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
+                    $infosClient=ClientMgr::getInfoClientByArt($idCommande);
                     require ('vues/view_header.php');
                     require('vues/view_nav.php');
                     require ('vues/view_ticket.php');
