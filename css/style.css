@@ -74,6 +74,8 @@ header {
 
 .main-accueil {
     margin-top:1vh;
+    overflow: scroll;
+    max-height: 65vh;
 }
 
 .list-group {
@@ -137,7 +139,7 @@ header {
 
    /** PAGINATION **/
 
-   .row.text-center.nav {
+   .row.text-center.nav, .position_formulaire {
        width:50%;
        margin-left: 25%;
        margin-right: 25%;
@@ -166,4 +168,8 @@ header {
 
    .page-item {
        font-size: 2vh;
+   }
+
+   .btn-primary{
+        background-color: #3d509d;
    }
