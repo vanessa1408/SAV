@@ -21,6 +21,6 @@
             <input type="text" class="form-control" name="VilleClient" placeholder="Recherchez un client par Ville...">
         </div> -->
         <button type="submit" class="btn btn-primary">Recherchez</button>
-        <button type="button" class="btn btn-danger">Annulez </button>
+        <button type="reset" class="btn btn-danger">Annulez </button>
     </form>
 </div>

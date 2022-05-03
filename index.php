@@ -16,6 +16,14 @@ var_dump($_POST);
             // $action = 'connexion';
             $action = 'accueil';
 
+            session_start();
+ 
+            // Initialisation des données
+
+            $action = 'connexion';
+            // $action = 'accueil';
+
+
             // Détermination de l'action en cours
 
             if(isset($_GET['action'])){
@@ -33,19 +41,41 @@ var_dump($_POST);
             if(isset($_GET['IdClient'])){
                 $id = $_GET['IdClient'];
             }
-           
+            if(isset($_SESSION['login'])){
+               $login = $_SESSION['login'];
+            }
+
+
+
             switch ($action){
                 case 'connexion' :
                     require ('vues/view_header.php');
                     require ('vues/view_connexion.php');
-                    require ('vues/view_footer.php');
+                    require('vues/view_footer.php');
                     break;
+                case 'deconnexion' :
+                    session_destroy();
+                    require ('vues/view_header.php');
+                    require ('vues/view_connexion.php');
+                    require('vues/view_footer.php');
+                    break;
+                case 'connexionErreur' :
+                    require ('vues/view_header.php');
+                    Echo "Erreur de login/password !";
+                    require ('vues/view_connexion.php');
+                    require('vues/view_footer.php');
+                    break;
+
                 case 'accueil' :
+                    try {
+                        $listeTicket = TicketMgr::getListeTickets(PDO::FETCH_CLASS);
+                    } catch (TicketMgrException $err) {
+                        echo "Il n'y a pas de ticket en cours.";
+                    }
                     require('vues/view_header.php');
                     require('vues/view_search.php');
                     require('vues/view_nav.php');
                     require('vues/view_main_accueil.php');
-                    // require('vues/view_pagination.php');
                     require('vues/view_footer.php');
                     break;
                 case 'recherchedossier' :
@@ -94,10 +124,20 @@ var_dump($_POST);
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
                     require ('vues/view_dossierClient.php');
-                    require ('vues/view_footer.php');
+                    // require ('vues/view_result_dossier.php');
+                    require('vues/view_footer.php');
                     break;
-            }
+                case 'affTicket' :
+                    $idTicket = $_GET['id'];
+                    $infosTicket=TicketMgr::getInfosTicket($idTicket);
+                    require ('vues/view_header.php');
+                    require('vues/view_nav.php');
+                    require ('vues/view_ticket.php');
+                    require('vues/view_footer.php');
+                    break;
+                }
 ?>
+
 
 
 

@@ -1,3 +1,35 @@
 @media (min-width:993px) and (max-width: 1199px) {
 
+        /**** Connexion **********/
+        
+        h1 {
+            margin-left : 20vw;
+            font-size : 5vw;
+        }
+        label {
+            font-size : 4vw;
+        }
+        #label1 {
+            margin-left : 35vw;
+        }
+        #label2 {
+            margin-left : 37.5vw;
+        }
+        #login {
+            margin-left : 40vw;
+            margin-top : 2vh;
+            margin-bottom : 2vh;
+            font-size : 1.5em;
+        }
+        #password {
+            margin-left : 40vw;
+            margin-top : 2vh;
+            margin-bottom : 5vh;
+            font-size : 1.5em;
+        }
+       
+        #connecter{
+            font-size : 2em;
+            margin-left : 40vw;
+        }
 }
