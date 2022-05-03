@@ -4,6 +4,7 @@
             require_once("modeles/TicketMgr.class.php");     
             require_once("modeles/Recherche_Dossier.class.php");
             require_once("modeles/ClientMgr.class.php");
+            require_once('classes/UserMgr.class.php');
             require_once("classes/TicketMgrException.class.php");
             require_once("classes/Client.class.php");
             require_once("classes/Commande.class.php");
@@ -23,7 +24,11 @@ var_dump($_POST);
 
 
             // Détermination de l'action en cours
-
+            if(isset($_SESSION['user'])){
+                $userConnect = $_SESSION['user'];
+            }else{
+                $action = 'connexion';
+            }
             if(isset($_GET['action'])){
                 $action = $_GET['action'];
             }
@@ -42,8 +47,14 @@ var_dump($_POST);
             if(isset($_GET['IdClient'])){
                 $id = $_GET['IdClient'];
             }
-            if(isset($_SESSION['login'])){
-                $login = $_SESSION['login'];
+            if(isset($_SESSION['user'])){
+                $login = $_SESSION['user'];
+            }
+            if(isset($_POST['password'])){
+                $password = $_POST['password'];
+            }
+            if(isset($_POST['login'])){
+                $user = $_POST['login'];
             }
             if(isset($_GET['IdCommande'])){
                 $idcmd = $_GET['IdCommande'];
@@ -52,10 +63,14 @@ var_dump($_POST);
 
             switch ($action){
                 case 'connexion' :
+                    unset($_SESSION['user']);
                     require ('vues/view_header.php');
                     require ('vues/view_connexion.php');
-                    require('vues/view_footer.php');
+                    require ('vues/view_footer.php');
                     break;
+                case 'ctrlconnexion' :
+                    UserMgr::getUser($user, $password);        
+                    break;    
                 case 'deconnexion' :
                     session_destroy();
                     require ('vues/view_header.php');
@@ -78,6 +93,7 @@ var_dump($_POST);
                     require('vues/view_header.php');
                     require('vues/view_search.php');
                     require('vues/view_nav.php');
+                   // echo "Bienvenue " . $userConnect. "";
                     require('vues/view_main_accueil.php');
                     require('vues/view_footer.php');
                     break;
@@ -155,7 +171,3 @@ var_dump($_POST);
                     break;
                 }
 ?>
-
-
-
-
