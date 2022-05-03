@@ -180,7 +180,19 @@ main::-webkit-scrollbar {
        text-align: center;
    }
 
-   
+   .infos-dossier label{
+       font-size:2vh;
+   }
+
+   .label-dossier-droite {
+       margin-left: 2vh;
+       margin-right: 2vh;
+   }
+   .label-dossier {
+        margin-right: 2vh;
+   } 
+
+
    /***** Connexion ****/
 
    h1{
