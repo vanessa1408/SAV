@@ -1,49 +1,53 @@
-<?php
+            <?php
+            session_start();
+            require_once('modeles/UserMgr.class.php');
+            require_once('modeles/DbSav.class.php');
+//echo "GET:"; var_dump($_GET);
+//echo "POST:"; var_dump($_POST);
+//unset($_SESSION['user']);
+//echo "SESSION:"; var_dump($_SESSION);
+//die("test");
 
-            require_once("modeles/DbSav.class.php");
-            require_once("modeles/TicketMgr.class.php");     
-            require_once("modeles/Recherche_Dossier.class.php");
-            require_once("modeles/ClientMgr.class.php");
-            require_once("classes/TicketMgrException.class.php");
-            require_once("classes/Client.class.php");
-            require_once("classes/Commande.class.php");
-            require_once("classes/Article.class.php");
-            
-var_dump($_POST);
- 
             // Initialisation des données
-
-            // $action = 'connexion';
-            $action = 'accueil';
+            $action = 'connexion';
+            //$action = 'accueil';
 
             // Détermination de l'action en cours
+
+            if(isset($_SESSION['user'])){
+                $userConnect = $_SESSION['user'];
+            }else{
+                $action = 'connexion';
+            }
 
             if(isset($_GET['action'])){
                 $action = $_GET['action'];
             }
-            if(isset($_POST['nomClient'])){
-                $nom = $_POST["nomClient"];
+            if(isset($_POST['login'])){
+                $user = $_POST['login'];
             }
-            if(isset($_POST['Ncmd'])){
-                $numCMD = $_POST['Ncmd'];
+            if(isset($_POST['password'])){
+                $password = $_POST['password'];
             }
-            if(isset($_POST['refArticle'])){
-                $numArt = $_POST['refArticle'];
-            }
-            if(isset($_GET['IdClient'])){
-                $id = $_GET['IdClient'];
-            }
-           
+
             switch ($action){
                 case 'connexion' :
+                    unset($_SESSION['user']);
+
                     require ('vues/view_header.php');
                     require ('vues/view_connexion.php');
-                    require ('vues/view_footer.php');
+                    require('vues/view_footer.php');
+                    break;
+                case 'ctrlconnexion' :
+                    UserMgr::getUser($user, $password);
+                    
                     break;
                 case 'accueil' :
                     require('vues/view_header.php');
                     require('vues/view_search.php');
                     require('vues/view_nav.php');
+                    echo "Bienvenue " . $userConnect. "";
+                    //var_dump(DbSav::$connexion);
                     require('vues/view_main_accueil.php');
                     // require('vues/view_pagination.php');
                     require('vues/view_footer.php');
@@ -52,52 +56,15 @@ var_dump($_POST);
                     $recherche = $_GET['motrecherche'];
                     require ('vues/view_header.php');
                     require('vues/view_nav.php');
-                    require ('vues/view_result_recherche.php');
+                    require ('vues/view_result_dossier.php');
                     require('vues/view_footer.php');
                     break;
-                case 'recherche' :
-                    require ('vues/view_header.php');
-                    require ('vues/view_nav.php');
-                    require ('vues/view_form_recherche.php');
-                    require ('vues/view_footer.php');
-                    break;
-                case 'diagnostic' :
-                    require ('vues/view_header.php');
-                    require ('vues/view_nav.php');
-                    // require ('vues/');
-                    require ('vues/view_footer.php');
-                break;
-                case 'creadossier' : 
-                    require ('vues/view_header.php');
-                    require ('vues/view_nav_modal.php');
-                    require ('vues/view_modal.php');
-                    require ('vues/view_footer.php');
-                break;
-                case 'rechercheMaj' :
-                    $affichage = $_POST['nomClient']." ".$_POST['Ncmd']." ".$_POST['refArticle'];
-                    if ($nom <> ""){
-                        $resultatNom = Recherche_Dossier::getListClients($nom);
-                    }
-                    elseif ($numCMD <> ""){            
-                        $resultatCMD = Recherche_Dossier::getNumCmd($numCMD); 
-                    }
-                    elseif ($numArt <> ""){
-                        $resultatArt = Recherche_Dossier::getArticle($numArt); 
-                    }
-                    require ('vues/view_header.php');
-                    require ('vues/view_nav.php');
-                    require ('vues/view_result_recherche.php');
-                    require ('vues/view_footer.php');
-                    break;
-                case 'afficheClient' :
-                    $donnee = ClientMgr::getInfoClient($id);
-                    require ('vues/view_header.php');
-                    require ('vues/view_nav.php');
-                    require ('vues/view_dossierClient.php');
-                    require ('vues/view_footer.php');
-                    break;
-            }
-?>
+                }
+
+
+
+
+            ?>
 
 
 
