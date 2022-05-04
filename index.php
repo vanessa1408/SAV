@@ -4,7 +4,7 @@
             require_once("modeles/TicketMgr.class.php");     
             require_once("modeles/Recherche_Dossier.class.php");
             require_once("modeles/ClientMgr.class.php");
-            require_once('classes/UserMgr.class.php');
+            require_once("classes/UserMgr.class.php");
             require_once("classes/TicketMgrException.class.php");
             require_once("classes/Client.class.php");
             require_once("classes/Commande.class.php");
@@ -13,8 +13,7 @@
 var_dump($_POST);
  
             // Initialisation des données
-
-           
+          
             session_start();
  
             // Initialisation des données
@@ -149,6 +148,7 @@ var_dump($_POST);
                     else {
                         $donnee2 = ClientMgr::getInfoClientByArt($idcmd);
                     }
+                    $donnee3 = ClientMgr::getCommandeClient($id);
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
                     require ('vues/view_dossierClient.php');
