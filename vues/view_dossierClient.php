@@ -32,8 +32,16 @@
                     echo '<p>Numéro Client : '.$IdClient."</p><br/>";
                     echo '<p>Nom : '.$NomClient."</p><br/>";
                     echo '<p>Prenom : '.$PrénomClient."</p><br/>";
-                    echo '<p>Adresse : '.$AdresseClient.'<br/> Ville : '.$CPClient.' '.$VilleClient. "</p><br/>";
-                    echo '<a href="index.php?action=afficheCMD&IdCommande='.$IdCommande.'">Commande(s) effectuée(s) : ' . $IdCommande . '</a><br/><hr>';
+                    echo '<p>Adresse : '.$AdresseClient.'<br/> Code Postal : '.$CPClient.'<br/> Ville : '.$VilleClient. "</p><br/>";
+                foreach ($donnee3 as $key => $tdonnee)
+                {
+                    $IdClient = $tdonnee[0];
+                    $NomClient = $tdonnee[1];
+                    $PrénomClient = $tdonnee[2];
+                    $IdCommande = $tdonnee[3];
+                    echo '<a href="index.php?action=afficheCMD&IdCommande='.$IdCommande.'">Commande(s) effectuée(s) : ' .$IdCommande . '</a><br/><hr>';
+                }
+// var_dump($donnee);
                     ?>
             </div>
         </div> 

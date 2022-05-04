@@ -11,7 +11,7 @@ class UserMgr {
         //Préparation de la requête SQL
         $sql="SELECT COUNT(*) FROM technicien WHERE 
         Login = '$user' AND Password = '$password'";
-        //Connexion
+        //Connexion 
         if($user <>"" && $password <>""){ 
             $ctrlConnexion = DbSav::getConnexion()->query($sql);
             if ($ctrlConnexion=1) // login et password OK
