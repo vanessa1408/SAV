@@ -5,13 +5,13 @@
             require_once("modeles/TicketMgr.class.php");     
             require_once("modeles/Recherche_Dossier.class.php");
             require_once("modeles/ClientMgr.class.php");
-            require_once("modeles/UserMgr.class.php");
+            require_once("classes/UserMgr.class.php");
             require_once("classes/TicketMgrException.class.php");
             require_once("classes/Client.class.php");
             require_once("classes/Commande.class.php");
             require_once("classes/Article.class.php");
             
-       
+var_dump($_POST);
  
             // Initialisation des données
 
@@ -139,12 +139,14 @@
                     require ('vues/view_footer.php');
                     break;
                 case 'afficheClient' :
+                    // $modeobjet = PDO::FETCH_CLASS;
                 if (isset($_GET['IdClient'])){
                         $donnee = ClientMgr::getInfoClient($id);
                     }
                     else {
-                        $donnee2 = ClientMgr::getInfoClientByArt($idcmd);
+                        $donnee2 = ClientMgr::getInfoClientByArticle($idcmd);
                     }
+                    $donnee3 = ClientMgr::getCommandeClient($id);
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
                     require ('vues/view_dossierClient.php');

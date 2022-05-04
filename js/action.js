@@ -1,7 +1,7 @@
 // Récupération de mes éléments HTML
 
 var btnModifClient = document.getElementById("modifClient");
-
+var btnEnrClient = document.getElementById("enregistrerClient");
 
 // Abonner les éléments
 
@@ -11,7 +11,8 @@ btnModifClient.addEventListener("click", function(){
     document.getElementById('adresse').disabled = false;
     document.getElementById('cp').disabled = false;
     document.getElementById('ville').disabled = false;
-    btnModifClient.value = 'Enregistrer';
+    btnModifClient.display = 'none';
+    btnEnrClient.display = 'block';
 });
 
 
