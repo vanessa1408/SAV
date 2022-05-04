@@ -1,4 +1,4 @@
-
+<?php echo $infosTicket->DateDiag ?>
 <div class="main-accueil mx-auto">
     
     <div class="infos-dossier">
@@ -19,23 +19,36 @@
             <textarea name="observation"class="form-control" aria-label="With textarea" disabled="disabled"><?php echo $infosTicket->Observations; ?></textarea></p>
     </div>   
     <div class="infos-dossier">
+        <form method="GET" action="#">
             <legend class="list-group-item list-group-item-action active title-list">Client
-                    <input class="float-end" type="button" value="Modifier" id="modifClient">
-                    <input class="float-end" type="button" value="Enregistrer" id="enregistrerClient"></legend></p>
-            <p><label class="label-dossier" for="nom">Nom : </label>
-            <input id="nom" name="nom" type="text" disabled="disabled" value="<?php echo $infosClient->NomClient ?>">
-            <label class="label-dossier-droite" for="prenom">Prénom : </label>
-            <input id="prenom" name="prenom" type="text" disabled="disabled" value="<?php echo $infosClient->PrénomClient ?>"></p>
-            <p><label class="label-dossier" for="adresse">Adresse : </label>
-            <input id="adresse" name="adresse" type="text" disabled="disabled" value="<?php echo $infosClient->AdresseClient ?>"></p>
-            <p><label class="label-dossier" for="cp">CP : </label>
-            <input id="cp" name="cp" type="text" disabled="disabled" value="<?php echo $infosClient->CPClient ?>">
-            <label class="label-dossier-droite" for="ville">Ville : </label>
-            <input id="ville" name="ville" type="text" disabled="disabled" value="<?php echo $infosClient->VilleClient ?>"></p>
+                        <input class="float-end" type="button" value="Modifier" id="modifClient">
+                                <input type="hidden" name="action" value="affTicketMAJ">
+                                <input type="hidden" name="id" value="<?php echo $infosTicket->idTicket; ?>">
+                                <input type="hidden" name="idCommande" value="<?php echo $infosTicket->IdCommande ?>">
+                                <input class="float-end" type="submit" value="Enregistrer" id="enregistrerClient"></legend>
+                        
+                        <input type="hidden" name="idClient" value="<?php echo $infosClient->IdClient ?>">
+                        <p><label class="label-dossier" for="nom">Nom : </label>
+                        <input type="text" name="nom"  disabled="disabled" id="nom" value="<?php echo $infosClient->NomClient ?>">
+                        <label class="label-dossier-droite" for="prenom">Prénom : </label>
+                        <input id="prenom" name="prenom" type="text" disabled="disabled" value="<?php echo $infosClient->PrénomClient ?>"></p>
+                        <p><label class="label-dossier" for="adresse">Adresse : </label>
+                        <input id="adresse" name="adresse" type="text" disabled="disabled" value="<?php echo $infosClient->AdresseClient ?>"></p>
+                        <p><label class="label-dossier" for="cp">CP : </label>
+                        <input id="cp" name="cp" type="text" disabled="disabled" value="<?php echo $infosClient->CPClient ?>">
+                        <label class="label-dossier-droite" for="ville">Ville : </label>
+                        <input id="ville" name="ville" type="text" disabled="disabled" value="<?php echo $infosClient->VilleClient ?>"></p>
+            </form>
     </div>       
          
     <div class="infos-dossier">
-            <legend class="list-group-item list-group-item-action active title-list">Diagnostic<input class="float-end" type="button" value="Modifier"></legend></p>
-            <p><label class="label-dossier" for="obs">Observation : <input name="obs" type="text" disabled="disabled" value="<?php echo $infosTicket->LibDiagnostic; ?>"></p>
-            <p><label class="label-dossier" for="datediag">Effectué le : <input name="datediag" type="date" disabled="disabled" value="<?php echo $infosTicket->DateDiag ?>"></p>
+            <legend class="list-group-item list-group-item-action active title-list">Diagnostic
+            <?php $dateDiag = $infosTicket->DateDiag;
+            $valueBtn = ($dateDiag == null) ? ('Ajouter') : ('Modifier'); 
+            ?>
+                    <input class="float-end" type="button" value="<?php echo $valueBtn ?>"></legend></p>
+            <p><label class="label-dossier" for="obs">Observation : 
+                    <input name="obs" type="text" disabled="disabled" value="<?php echo $infosTicket->LibDiagnostic ?>"></p>
+            <p><label class="label-dossier" for="datediag">Effectué le : 
+                    <input name="datediag" type="date" disabled="disabled" value="<?php echo $infosTicket->DateDiag ?>"></p>
     </div>

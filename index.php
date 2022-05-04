@@ -5,7 +5,7 @@
             require_once("modeles/TicketMgr.class.php");     
             require_once("modeles/Recherche_Dossier.class.php");
             require_once("modeles/ClientMgr.class.php");
-            require_once("classes/UserMgr.class.php");
+            require_once("modeles/UserMgr.class.php");
             require_once("classes/TicketMgrException.class.php");
             require_once("classes/Client.class.php");
             require_once("classes/Commande.class.php");
@@ -46,6 +46,11 @@ var_dump($_POST);
             }
             if(isset($_SESSION['user'])){
                 $login = $_SESSION['user'];
+                $identite=UserMgr::getInfosUser($login);
+                $nomConnecte = $identite->NomTechnicien;
+                $prenomConnecte = $identite->PrenomTechnicien;
+                $idService = $identite->IdService;
+
             } 
 
             if(isset($_GET['IdCommande'])){
@@ -58,6 +63,23 @@ var_dump($_POST);
                 $password = $_POST['password'];
             }
 
+            // Récupère les données du formulaire de modification infos Client
+           
+            if($action == 'affTicket' || $action =='affTicketMAJ'){
+                $idTicket = $_GET['id'];
+                $idCommande = $_GET['idCommande'];
+                $modeobjet = PDO::FETCH_OBJ;
+            }
+
+            if($action=='affTicketMAJ'){
+                $idC= $_GET['idClient'];
+                $nomC = $_GET['nom'];
+                $prenomC = $_GET['prenom'];
+                $adresseC= $_GET['adresse'];
+                $cpC = $_GET['cp'];
+                $villeC = $_GET['ville'];
+                }
+
 
             switch ($action){
                 case 'connexion' :
@@ -69,7 +91,6 @@ var_dump($_POST);
                     $action = UserMgr::getUser();
                     break;
                 case 'deconnexion' :
-                    session_destroy();
                     unset($_SESSION['user']);
                     require ('vues/view_header.php');
                     require ('vues/view_connexion.php');
@@ -95,9 +116,14 @@ var_dump($_POST);
                     break;
                 case 'recherchedossier' :
                     $recherche = $_GET['motrecherche'];
+                    try {
+                        $listeTicket = TicketMgr::getTicketbyMot($recherche);
+                    } catch (TicketMgrException $err) {
+                        echo "Il n'y a pas de ticket en cours.";
+                    }
                     require ('vues/view_header.php');
                     require('vues/view_nav.php');
-                    require ('vues/view_result_recherche.php');
+                    require('vues/view_main_accueil.php');
                     require('vues/view_footer.php');
                     break;
                 case 'recherche' :
@@ -154,9 +180,16 @@ var_dump($_POST);
                     require('vues/view_footer.php');
                     break;
                 case 'affTicket' :
-                    $idTicket = $_GET['id'];
-                    $idCommande = $_GET['idCommande'];
-                    $modeobjet = PDO::FETCH_OBJ;
+                    $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
+                    $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
+                    require ('vues/view_header.php');
+                    require('vues/view_nav.php');
+                    require ('vues/view_ticket.php');
+                    require('vues/view_footer.php');
+                    break;
+                case 'affTicketMAJ' :
+                    $msg = ClientMgr::updateInfosClient($idC, $nomC, $prenomC);
+                    $msg = $msg . ClientMgr::updateAdressByIdClient($idC,$adresseC,$cpC,$villeC);
                     $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
                     $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
                     require ('vues/view_header.php');

@@ -31,18 +31,26 @@ class UserMgr {
                 header('location:index.php?action=connexion');
                 echo "Connexion NOK";
                 $action = 'connexion';
-            }  
+            }
+        }  
             DbSav::disconnect();
 
             return $action;
-        }
-        
-        
-        //Déconnecte du serveur
+                        
+    }
 
-        //Retourne l'utilisateur connecté
-        //return $_SESSION;
-        
+    public static function getInfosUser(string $user){
+        //Préparation de la requête SQL
+        $sql="SELECT PrenomTechnicien, NomTechnicien, IdService FROM technicien WHERE 
+        Login = '$user'";
+        //Connexion
+        $connexion = DbSav::getConnexion()->query($sql);
+        $identite = $connexion->fetch(PDO::FETCH_OBJ);
 
+    // Deconnecte du serveur
+    DbSav::disconnect();
+
+    // Retourne le tableau
+    return $identite;
     }
 }
