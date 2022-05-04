@@ -49,8 +49,8 @@
         margin-left : 10vw;
         font-size : 5vw;
     }
-    label {
-        font-size : 5vw;
+    #label1, #label2 {
+        font-size : 4vw;
     }
     #label1 {
         margin-left : 27.5vw;

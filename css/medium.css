@@ -6,8 +6,8 @@
             margin-left : 20vw;
             font-size : 5vw;
         }
-        label {
-            font-size : 4vw;
+        #label1,#label2 {
+            font-size : 3vw;
         }
         #label1 {
             margin-left : 35vw;

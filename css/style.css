@@ -180,6 +180,7 @@ main::-webkit-scrollbar {
 
    }  
    
+   /********** MAIN :: affichage détails du dossier ******************/
    .type-dossier {
        display: inline;
        float:right;
@@ -189,7 +190,28 @@ main::-webkit-scrollbar {
        text-align: center;
    }
 
-   
+   .infos-dossier label{
+       font-size:2vh;
+   }
+
+   .label-dossier-droite {
+       margin-left: 2vh;
+       margin-right: 2vh;
+   }
+   .label-dossier {
+        margin-right: 2vh;
+   } 
+   .infos-dossier>p {
+       padding-left: 3vh;
+       padding-right: 3vh;
+   }
+
+   .infos-dossier>legend{
+    margin-bottom: 3vh;
+    margin-top: 3vh;
+   }
+
+
    /***** Connexion ****/
 
    .row.text-center.nav, .position_formulaire {
@@ -203,7 +225,7 @@ main::-webkit-scrollbar {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color : #3d509d;
     }
-    .label {
+    #label1, #label2 {
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         text-align: center;
     }

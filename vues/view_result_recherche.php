@@ -31,18 +31,23 @@
                         }
                     } elseif (strlen($numArt > 0)) {
                         foreach ($resultatArt as $keyArt => $tArt){
-                            $IdArticle  = $tArt [0];
-                            $NomArticle = $tArt [1];
-                            $StockPhysiqueArticle = $tArt [2];
-                            $StockRebusArticle = $tArt [3];
-                            $StockSAVArticle = $tArt [4];
-                            $IdCommande = $tArt [5];
-                            $IdArticle = $tArt [6];
-                            $Garantie = $tArt [7];
-                            $QteCOmART = $tArt [8];
-                            $QteExpArt = $tArt [9];
-                            echo '<a href="index.php?action=afficheClient&IdCommande='.$IdCommande.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
-                            "Nom de l'article : ". $NomArticle  . " -- Référence : " . $IdArticle . " -- Commande : ". $IdCommande . " ".
+                            $IdCommande  = $tArt [0];
+                            $DateCommande = $tArt [1];
+                            $StatutCommande = $tArt [2];
+                            $IdClient = $tArt [3];
+                            $IdFacture = $tArt [4];
+                            $IdArticle = $tArt [5];
+                            $NomArticle = $tArt [6];
+                            $StockPhysiqueArticle = $tArt [7];
+                            $StockRebusArticle = $tArt [8];
+                            $StockSAVArticle = $tArt [9];
+                            $QteCOmART = $tArt [10];
+                            $Garantie = $tArt [11];
+                            $QteExpArt = $tArt [12];
+                            $NomClient = $tArt [13];
+                            $PrénomClient = $tArt [14];
+                            echo '<a href="index.php?action=afficheClient&IdCommande='.$IdCommande.'&IdClient='.$IdClient.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
+                            "Nom de l'article : ". $NomArticle  . " -- Référence : " . $IdArticle . " -- Commande : ". $IdCommande . " // Nom : ". $NomClient. " " . $PrénomClient . " ".
                             '<p class="type-dossier"></p></a>';
                         }
                     } elseif (strlen($CPclient > 0)) {

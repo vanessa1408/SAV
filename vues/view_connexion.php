@@ -6,7 +6,7 @@
         <br />
         <label id="label2">Mot de passe</label> 
         <br/>
-        <input type="password" name="password" id="password" placeholder="Mot de passe" >
+        <input type="password" name="password" id="password" placeholder="Mot de passe" required="required">
         <br/>        
         <input type="submit"  name="submit" id="connecter" value="Se connecter">
     </form>
