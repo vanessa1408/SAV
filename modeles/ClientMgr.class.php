@@ -21,14 +21,8 @@ class ClientMgr{
         JOIN commande ON client.IdClient = commande.IdClient
         JOIN adresse ON client.IdClient = adresse.IdClient 
         WHERE commande.IdCommande = '$idcmd'");
-
-        if($typageRet===PDO::FETCH_CLASS){
-        include ("classes/Client.class.php");
-        $tab = $resultat->fetch(PDO::FETCH_CLASS);
-
-        } else {
-            $tab = $resultat->fetch($typageRet);
-        }
+       
+        $tab = $resultat->fetch($typageRet);
 
         // Deconnecte du serveur
         DbSav::disconnect();
