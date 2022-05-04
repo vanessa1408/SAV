@@ -27,7 +27,15 @@
         public static function getArticle ($numArt)
         {
             $connexion = DbSav::getConnexion();
-            $resultat = $connexion->query("SELECT * FROM `article` JOIN contenir ON contenir.IdArticle = article.IdArticle WHERE article.IdArticle LIKE '$numArt'");
+            $resultat = $connexion->query("SELECT commande.IdCommande, commande.DateCommande, commande.StatutCommande, commande.IdClient, commande.IdFacture, 
+                                                article.IdArticle, article.NomArticle, article.StockPhysiqueArticle, article.StockRebusArticle, article.StockSAVArticle, 
+                                                contenir.Garantie, contenir.QteCOmART, contenir.QteExpArt, client.NomClient, client.PrénomClient 
+                                                FROM commande 
+                                                JOIN contenir ON contenir.IdCommande = commande.IdCommande 
+                                                JOIN article ON contenir.IdArticle = article.IdArticle 
+                                                JOIN client ON commande.IdClient = client.IdClient 
+                                                WHERE article.IdArticle 
+                                                LIKE '$numArt'");
             $tab = $resultat->fetchAll();
             return $tab;
         }
