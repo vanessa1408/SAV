@@ -19,12 +19,19 @@
             <textarea name="observation"class="form-control" aria-label="With textarea" disabled="disabled"><?php echo $infosTicket->Observations; ?></textarea></p>
     </div>   
     <div class="infos-dossier">
-            <legend class="list-group-item list-group-item-action active title-list">Client<input class="float-end" type="button" value="Modifier"></legend></p>
-            <p><label class="label-dossier" for="nom">Nom : </label><input name="nom" type="text" disabled="disabled" value="<?php echo $infosClient->NomClient ?>">
-            <label class="label-dossier-droite" for="prenom">Prénom : </label><input name="prenom" type="text" disabled="disabled" value="<?php echo $infosClient->PrénomClient ?>"></p>
-            <p><label class="label-dossier" for="adresse">Adresse : </label><input name="adresse" type="text" disabled="disabled" value="<?php echo $infosClient->AdresseClient ?>"></p>
-            <p><label class="label-dossier" for="cp">CP : </label><input name="cp" type="text" disabled="disabled" value="<?php echo $infosClient->CPClient ?>">
-            <label class="label-dossier-droite" for="ville">Ville : </label><input name="ville" type="text" disabled="disabled" value="<?php echo $infosClient->VilleClient ?>"></p>
+            <legend class="list-group-item list-group-item-action active title-list">Client
+                    <input class="float-end" type="button" value="Modifier" id="modifClient">
+                    <input class="float-end" type="button" value="Enregistrer" id="enregistrerClient"></legend></p>
+            <p><label class="label-dossier" for="nom">Nom : </label>
+            <input id="nom" name="nom" type="text" disabled="disabled" value="<?php echo $infosClient->NomClient ?>">
+            <label class="label-dossier-droite" for="prenom">Prénom : </label>
+            <input id="prenom" name="prenom" type="text" disabled="disabled" value="<?php echo $infosClient->PrénomClient ?>"></p>
+            <p><label class="label-dossier" for="adresse">Adresse : </label>
+            <input id="adresse" name="adresse" type="text" disabled="disabled" value="<?php echo $infosClient->AdresseClient ?>"></p>
+            <p><label class="label-dossier" for="cp">CP : </label>
+            <input id="cp" name="cp" type="text" disabled="disabled" value="<?php echo $infosClient->CPClient ?>">
+            <label class="label-dossier-droite" for="ville">Ville : </label>
+            <input id="ville" name="ville" type="text" disabled="disabled" value="<?php echo $infosClient->VilleClient ?>"></p>
     </div>       
          
     <div class="infos-dossier">

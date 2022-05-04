@@ -211,6 +211,13 @@ main::-webkit-scrollbar {
     margin-top: 3vh;
    }
 
+   #modifClient {
+    display:block;
+}
+
+    #enregistrerClient {
+       display:none;
+   }
 
    /***** Connexion ****/
 
