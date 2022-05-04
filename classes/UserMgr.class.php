@@ -5,7 +5,7 @@ class UserMgr {
     // Initialisation des variables
     
 
-    public static function getUser($user, $password){
+    public static function getUser(){
         $user = $_POST['login'];
         $password = $_POST['password'];
         //Préparation de la requête SQL
