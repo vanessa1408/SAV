@@ -11,24 +11,23 @@
             require_once("classes/Commande.class.php");
             require_once("classes/Article.class.php");
             
-//var_dump($_POST);
-//echo"S_SESSION :"; var_dump($_SESSION);
+       
  
             // Initialisation des données
 
-           
- 
-            // Initialisation des données
+            $action = 'connexion';
 
-            //$action = 'connexion';
             // $action = 'accueil';
 
 
             // Détermination de l'action en cours
-            if(empty($_SESSION) ? $action = 'connexion' : $action = 'accueil');
+            // if(empty($_SESSION) ? $action = 'connexion' : $action = 'accueil');
 
             if(isset($_GET['action'])){
                 $action = $_GET['action'];
+                if($action == 'connexion' || $action == 'deconnexion' ){
+                    unset($_SESSION['user']);
+                }
             }
             if(isset($_POST['nomClient'])){
                 $nom = $_POST["nomClient"];
@@ -76,13 +75,7 @@
                     require ('vues/view_connexion.php');
                     require('vues/view_footer.php');
                     break;
-              /*  case 'connexionErreur' :
-                    require ('vues/view_header.php');
-                    Echo "Erreur de login/password !";
-                    require ('vues/view_connexion.php');
-                    require('vues/view_footer.php');
-                    break;
-*/
+
                 case 'accueil' :
                     if(!isset($_SESSION['user'])){
                         $action = 'connexion';
