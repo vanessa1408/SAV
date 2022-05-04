@@ -1,33 +1,32 @@
 <?php
+        session_start();
 
             require_once("modeles/DbSav.class.php");
             require_once("modeles/TicketMgr.class.php");     
             require_once("modeles/Recherche_Dossier.class.php");
             require_once("modeles/ClientMgr.class.php");
-            require_once("classes/UserMgr.class.php");
+            require_once("modeles/UserMgr.class.php");
             require_once("classes/TicketMgrException.class.php");
             require_once("classes/Client.class.php");
             require_once("classes/Commande.class.php");
             require_once("classes/Article.class.php");
             
-var_dump($_POST);
- 
-            // Initialisation des données
-          
-            session_start();
+//var_dump($_POST);
+//echo"S_SESSION :"; var_dump($_SESSION);
  
             // Initialisation des données
 
-            $action = 'connexion';
+           
+ 
+            // Initialisation des données
+
+            //$action = 'connexion';
             // $action = 'accueil';
 
 
             // Détermination de l'action en cours
-            if(isset($_SESSION['user'])){
-                $userConnect = $_SESSION['user'];
-            }else{
-                $action = 'connexion';
-            }
+            if(empty($_SESSION) ? $action = 'connexion' : $action = 'accueil');
+
             if(isset($_GET['action'])){
                 $action = $_GET['action'];
             }
@@ -48,42 +47,48 @@ var_dump($_POST);
             }
             if(isset($_SESSION['user'])){
                 $login = $_SESSION['user'];
-            }
-            if(isset($_POST['password'])){
-                $password = $_POST['password'];
+            } 
+
+            if(isset($_GET['IdCommande'])){
+                $idcmd = $_GET['IdCommande'];
             }
             if(isset($_POST['login'])){
                 $user = $_POST['login'];
             }
-            if(isset($_GET['IdCommande'])){
-                $idcmd = $_GET['IdCommande'];
+            if(isset($_POST['password'])){
+                $password = $_POST['password'];
             }
 
 
             switch ($action){
                 case 'connexion' :
-                    unset($_SESSION['user']);
-                    require ('vues/view_header.php');
-                    require ('vues/view_connexion.php');
-                    require ('vues/view_footer.php');
-                    break;
-                case 'ctrlconnexion' :
-                    UserMgr::getUser($user, $password);        
-                    break;    
-                case 'deconnexion' :
-                    session_destroy();
                     require ('vues/view_header.php');
                     require ('vues/view_connexion.php');
                     require('vues/view_footer.php');
                     break;
-                case 'connexionErreur' :
+                case 'ctrlconnexion' :
+                    $action = UserMgr::getUser();
+                    break;
+                case 'deconnexion' :
+                    session_destroy();
+                    unset($_SESSION['user']);
+                    require ('vues/view_header.php');
+                    require ('vues/view_connexion.php');
+                    require('vues/view_footer.php');
+                    break;
+              /*  case 'connexionErreur' :
                     require ('vues/view_header.php');
                     Echo "Erreur de login/password !";
                     require ('vues/view_connexion.php');
                     require('vues/view_footer.php');
                     break;
-
+*/
                 case 'accueil' :
+                    if(!isset($_SESSION['user'])){
+                        $action = 'connexion';
+                       header('Refresh:0; url= index.php');
+                        break;
+                    }
                     try {
                         $listeTicket = TicketMgr::getListeTickets(PDO::FETCH_CLASS);
                     } catch (TicketMgrException $err) {
@@ -92,7 +97,6 @@ var_dump($_POST);
                     require('vues/view_header.php');
                     require('vues/view_search.php');
                     require('vues/view_nav.php');
-                   // echo "Bienvenue " . $userConnect. "";
                     require('vues/view_main_accueil.php');
                     require('vues/view_footer.php');
                     break;
@@ -148,7 +152,6 @@ var_dump($_POST);
                     else {
                         $donnee2 = ClientMgr::getInfoClientByArt($idcmd);
                     }
-                    $donnee3 = ClientMgr::getCommandeClient($id);
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
                     require ('vues/view_dossierClient.php');
@@ -171,3 +174,7 @@ var_dump($_POST);
                     break;
                 }
 ?>
+
+
+
+
