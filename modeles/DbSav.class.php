@@ -11,9 +11,6 @@ class DbSav {
 
 	// Pas de constructeur explicite
 
-
-    
-
 	// fonction de connexion à la BDD
     private static function connect() {
 

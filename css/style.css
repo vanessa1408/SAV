@@ -15,6 +15,9 @@ header {
     z-index: 1;
 }
 
+
+/* Recherche top */
+
 .connexion {
     padding-right : 10vh;
     padding-top : 2vh;
@@ -121,6 +124,12 @@ main::-webkit-scrollbar {
     margin-top:1vh;
 }
 
+.main-accueil {
+    margin-top:1vh;
+    overflow: scroll;
+    max-height: 65vh;
+}
+
 .list-group {
     width:95%;
     margin-left: 2.5%;
@@ -205,11 +214,18 @@ main::-webkit-scrollbar {
 
    /***** Connexion ****/
 
-   h1{
+   .row.text-center.nav, .position_formulaire {
+       width:50%;
+       margin-left: 25%;
+       margin-right: 25%;
+       margin-top: 2vh;
+       margin-bottom: 0;
+   }
+   .h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color : #3d509d;
     }
-    label {
+    .label {
         font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         text-align: center;
     }
@@ -221,6 +237,32 @@ main::-webkit-scrollbar {
         border-radius : 20px;
     }
 
+
+
+   .j{
+       padding: 0;
+       margin-left: auto;
+
+   }
+
+   .j:first-child {
+       margin-left: auto;
+   }
+
+   .j li{
+       list-style: none;
+       float:left;
+       display: inline;
+       flex-wrap: nowrap;
+   }
+
+   .page-item {
+       font-size: 2vh;
+   }
+
+   .btn-primary{
+        background-color: #3d509d;
+   }
     #connecter:hover {
         color: #3d509d;
         background-color: white;

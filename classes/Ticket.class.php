@@ -5,14 +5,16 @@ class Ticket {
     private $dateAppelClient;
     private $datePEC;
     private $dateFermTicket;
-    private $idType;
+    private $Motif;
+    private $Observation;
+    private $idDiag;
+    private $idTypeDossier;
     private $idTypeInter;
     private $idCommande;
     private $idTechnicien;
-    private $idTechnicien_1;
 
     // public function __construct(int $idTicket, date $dateAppelClient,date $datePEC,date $dateFermTicket,
-    //                             int $idType, int $idTypeInter, int $idCommande, int $idTechnicien, int $idTechnicien_1){
+    //                             int $idType, int $idTypeInter, int $idCommande, int $idTechnicien){
                                     
     // }
 
