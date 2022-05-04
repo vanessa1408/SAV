@@ -160,7 +160,10 @@
                     break;
                 case 'affTicket' :
                     $idTicket = $_GET['id'];
-                    $infosTicket=TicketMgr::getInfosTicket($idTicket);
+                    $idCommande = $_GET['idCommande'];
+                    $modeobjet = PDO::FETCH_OBJ;
+                    $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
+                    $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
                     require ('vues/view_header.php');
                     require('vues/view_nav.php');
                     require ('vues/view_ticket.php');
