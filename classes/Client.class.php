@@ -1,6 +1,6 @@
 <?php
 
-class client {
+class Client {
 
     private $IdClient;
     private $NomClient;
