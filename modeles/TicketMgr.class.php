@@ -35,12 +35,12 @@
 
         public static function getInfosTicket(int $idTicket, int $typageRet = PDO::FETCH_CLASS ){
              // Préparation de la requête SQL
-             $sql="SELECT idTicket, DateAppelClient, DatePEC, DateFermTicket, Motif, Observations, t.IdCommande, DateCommande, StatutCommande, d.LibDiagnostic, DateDiag, LibTypeInter,LibType FROM ticketsav t
+             $sql="SELECT t.IdTicket, DateAppelClient, DatePEC, DateFermTicket, Motif, Observations, t.IdCommande, DateCommande, StatutCommande, d.LibDiagnostic, IdDiag, DateDiag, LibTypeInter,LibType FROM ticketsav t
              JOIN commande cd on t.IdCommande = cd.IdCommande
              JOIN type_dossier td on td.IdTypeDossier = t.IdTypeDossier             
              JOIN typeinter ti on ti.IDTypeInter = t.IDTypeInter
-             LEFT JOIN diagnostic d on d.IdDiag = t.IdDiag
-             WHERE IdTicket = $idTicket";
+             LEFT JOIN diagnostic d on d.IdTicket = t.IdTicket
+             WHERE t.IdTicket = $idTicket";
              // Connexion
              $connect = DbSav::getConnexion()->query($sql);
              if($typageRet===PDO::FETCH_CLASS){
@@ -93,13 +93,41 @@
            return $tabTicket;
        }
 
-       public static function createDiagnostic(string $libelleDiag){
+
+    //    public static function updateDiagnostic(string $libelleDiag, int $idDiag){
+          
+    //     // Préparation de la requête SQL
+    //     $sql="UPDATE diagnostic SET LibDiagnostic = '$libelleDiag' WHERE IdDiag = $idDiag";
+    //     // Connexion
+    //     $connexion = DbSav::getConnexion()->query($sql);
+            
+
+    //     }
+    
+        public static function getListDiagnostic(int $idTicket) {
         // Préparation de la requête SQL
-        $sql="INSERT INTO diagnostic(LibDiagnostic, DateDiag) VALUES ($libelleDiag,NOW())";
+        $sql="SELECT `LibDiagnostic`,`DateDiag` FROM `diagnostic` WHERE `IdTicket`= $idTicket";
         // Connexion
         $connexion = DbSav::getConnexion()->query($sql);
-        $msg = "Diagnostic Ajouté";
-        return $msg;
+        $list = $connexion->fetchALL(PDO::FETCH_CLASS);
+    
+        // Fermer le curseur
+        $connexion->closeCursor();
+        // Deconnecte du serveur
+        DbSav::disconnect();
+
+        // Retourne le tableau
+        return $list;
+
+        }
+
+
+       public static function createDiagnostic(string $libelleDiag, int $idTicket, string $date = null) {
+        // Préparation de la requête SQL
+        $sql="INSERT INTO diagnostic(LibDiagnostic, IdTicket, DateDiag) VALUES ('$libelleDiag',$idTicket,now())";
+        // Connexion
+        $connexion = DbSav::getConnexion()->query($sql);
+
         }
     }
 

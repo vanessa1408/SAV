@@ -200,16 +200,22 @@ main::-webkit-scrollbar {
    }
    .label-dossier {
         margin-right: 2vh;
+        width:100%;
    } 
    .infos-dossier>p {
        padding-left: 3vh;
        padding-right: 3vh;
    }
 
-   .infos-dossier>legend{
-    margin-bottom: 3vh;
-    margin-top: 3vh;
-   }
+   #infosClient>p, #infosDiag>p, #addDiag>label {
+    padding-left: 3vh;
+    padding-right: 3vh;
+}
+
+#addDiag{
+    background-color: #eaeaec;
+    height : 3vh;
+}
 
    #modifClient {
     display:block;
@@ -218,6 +224,19 @@ main::-webkit-scrollbar {
     #enregistrerClient {
        display:none;
    }
+
+   #editDiag {
+    display:block;
+    }
+
+    #enrDiag  {
+        display:none;
+    }
+
+
+    .input-obsDiag {
+        width:60%;
+    }
 
    /***** Connexion ****/
 

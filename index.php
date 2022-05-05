@@ -11,8 +11,7 @@
             require_once("classes/Commande.class.php");
             require_once("classes/Article.class.php");
             
-var_dump($_POST);
- 
+
             // Initialisation des données
 
             $action = 'connexion';
@@ -53,8 +52,8 @@ var_dump($_POST);
 
             } 
 
-            if(isset($_GET['IdCommande'])){
-                $idcmd = $_GET['IdCommande'];
+            if(isset($_GET['idCommande'])){
+                $idcmd = $_GET['idCommande'];
             }
             if(isset($_POST['login'])){
                 $user = $_POST['login'];
@@ -65,7 +64,7 @@ var_dump($_POST);
 
             // Récupère les données du formulaire de modification infos Client
            
-            if($action == 'affTicket' || $action =='affTicketMAJ'){
+            if($action == 'affTicket' || $action =='affTicketMAJ' || $action=='affTicketMAJdiag'){
                 $idTicket = $_GET['id'];
                 $idCommande = $_GET['idCommande'];
                 $modeobjet = PDO::FETCH_OBJ;
@@ -79,6 +78,17 @@ var_dump($_POST);
                 $cpC = $_GET['cp'];
                 $villeC = $_GET['ville'];
                 }
+
+            if($action=='affTicketMAJdiag'){
+                $obsDiag= $_GET['obs'];
+                $idTicket = $_GET['id'];
+                if(isset($_GET['idDiag'])){
+                    $idDiag = $_GET['idDiag'];
+                } else {
+                    $idDiag = -1;
+                }
+
+            }
 
 
             switch ($action){
@@ -182,21 +192,35 @@ var_dump($_POST);
                 case 'affTicket' :
                     $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
                     $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
+                    $listDiag=TicketMgr::getListDiagnostic($idTicket);
                     require ('vues/view_header.php');
                     require('vues/view_nav.php');
                     require ('vues/view_ticket.php');
                     require('vues/view_footer.php');
                     break;
                 case 'affTicketMAJ' :
-                    $msg = ClientMgr::updateInfosClient($idC, $nomC, $prenomC);
-                    $msg = $msg . ClientMgr::updateAdressByIdClient($idC,$adresseC,$cpC,$villeC);
+                    ClientMgr::updateInfosClient($idC, $nomC, $prenomC);
+                    ClientMgr::updateAdressByIdClient($idC,$adresseC,$cpC,$villeC);
                     $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
                     $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
+                    $listDiag=TicketMgr::getListDiagnostic($idTicket);
                     require ('vues/view_header.php');
                     require('vues/view_nav.php');
                     require ('vues/view_ticket.php');
                     require('vues/view_footer.php');
                     break;
+                case 'affTicketMAJdiag' :
+                    TicketMgr::createDiagnostic($obsDiag,$idTicket);   
+                    $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
+                    $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
+                    $listDiag=TicketMgr::getListDiagnostic($idTicket);
+                    require ('vues/view_header.php');
+                    require('vues/view_nav.php');
+                    require ('vues/view_ticket.php');
+                    require('vues/view_footer.php');
+                    break;
+
+
                 case 'afficheCMD' :
                     require ('vues/view_header.php');
                     require ('vues/view_nav_modal.php');
@@ -205,7 +229,4 @@ var_dump($_POST);
                     break;
                 }
 ?>
-
-
-
 

@@ -55,8 +55,6 @@ class ClientMgr{
     $sql="UPDATE client SET NomClient='$nom',PrénomClient='$prenom' WHERE IdClient=$id";
     // Connexion
     $connexion = DbSav::getConnexion()->query($sql);
-    $msg = "Client MAJ ok";
-    return $msg;
     }
 
     public static function updateAdressByIdClient(int $id, string $adresse, string $cp, string $ville){
@@ -64,8 +62,6 @@ class ClientMgr{
         $sql="UPDATE `adresse` SET `AdresseClient`='$adresse',`CPClient`='$cp',`VilleClient`='$ville' WHERE IdClient=$id";
         // Connexion
         $connexion = DbSav::getConnexion()->query($sql);
-        $msg = "Adresse Client MAJ ok";
-        return $msg;
         }
 
 }
