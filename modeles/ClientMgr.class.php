@@ -49,4 +49,19 @@ class ClientMgr{
         $tab = $resultat->fetchAll();
         return $tab;
     }
+
+    public static function updateInfosClient(int $id, string $nom, string $prenom){
+    // Préparation de la requête SQL
+    $sql="UPDATE client SET NomClient='$nom',PrénomClient='$prenom' WHERE IdClient=$id";
+    // Connexion
+    $connexion = DbSav::getConnexion()->query($sql);
+    }
+
+    public static function updateAdressByIdClient(int $id, string $adresse, string $cp, string $ville){
+        // Préparation de la requête SQL
+        $sql="UPDATE `adresse` SET `AdresseClient`='$adresse',`CPClient`='$cp',`VilleClient`='$ville' WHERE IdClient=$id";
+        // Connexion
+        $connexion = DbSav::getConnexion()->query($sql);
+        }
+
 }
