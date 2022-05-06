@@ -130,14 +130,52 @@
 
         }
 
-        public static function updateInfosTicket(int $idTicket, string $dateCrea, int $numCmd, string $statCmd, string $datePEC, string $motif, string $obs, string $dateCloture = null){
-            $sql="UPDATE `ticketsav` SET `DateAppelClient`='$dateCrea',`DatePEC`='$datePEC',`DateFermTicket`='$dateCloture',`Motif`='$motif',`Observations`='$obs',`IdCommande`='$numCmd' WHERE `IdTicket`=$idTicket";
+        public static function updateInfosTicket(int $idTicket, string $dateCrea, int $numCmd, string $statCmd, string $datePEC, string $motif, string $obs){
+            $sql="UPDATE `ticketsav` SET `DateAppelClient`='$dateCrea',`DatePEC`='$datePEC',`Motif`='$motif',`Observations`='$obs',`IdCommande`='$numCmd' WHERE `IdTicket`=$idTicket";
             // Connexion
             $connexion = DbSav::getConnexion()->query($sql);
 
         }
 
+/**
+       * Il obtient le type de dossier de la base de données.
+       */
+      public static function getTypeDossier() {
+        $connexion = DbSav::getConnexion();
+        $resultat = $connexion->query("SELECT * FROM typeinter");
+        $tab = $resultat->fetchAll();
+        return $tab;
+   }
 
+ /**
+  * Il récupère les données de la base de données et les renvoie sous forme de tableau.
+  */
+   public static function getMotif() {
+        $connexion = DbSav::getConnexion();
+        $resultat = $connexion->query("SELECT * FROM type_dossier");
+        $tab = $resultat->fetchAll();
+        return $tab;
+   }
+
+  /**
+   * Il crée un ticket dans la base de données.
+   * 
+   * @param IdTypeDossier 
+   * @param IdTypeInter 
+   * @param IdCommande Le numéro de commande
+   * @param idTechnicien l'identifiant du technicien qui est connecté
+   * @param date la date de l'appel
+   * 
+   * @return Le résultat de la requête.
+   */
+   public static function creaTicket($IdTypeDossier, $IdTypeInter, $IdCommande, $idTechnicien, $date=null) {
+        $connexion = DbSav::getConnexion();
+        $resultat = $connexion->query("INSERT INTO `ticketsav`(`IdTypeDossier`, `IDTypeInter`, 
+                                                    `IdCommande`, `IdTechnicien`,`DateAppelClient`) 
+                                                    VALUES ($IdTypeDossier,$IdTypeInter,$IdCommande,$idTechnicien,now())");
+        $resultat->execute(); 
+        return $resultat;
+   }
     }
 
 ?>

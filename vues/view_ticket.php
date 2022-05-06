@@ -16,7 +16,7 @@
                         <label class="label-dossier-droite" for="typeInter">Type d'intervention : </label><input id="typeInter" name="typeInter" type="text" disabled="disabled" value="<?php echo $infosTicket->LibTypeInter; ?>"></p>
 
             <p><label class="label-dossier" for="dateCrea">Date de création du ticket :</label><input id="dateCrea" name="dateCrea" type="date" disabled="disabled" value="<?php echo $infosTicket->DateAppelClient; ?>"></p>
-            <p><label class="label-dossier" for="dateCloture">Date de clôture du ticket :</label><input id="dateCloture" name="dateCloture" type="date" disabled="disabled" value="<?php echo $infosTicket->DateFermTicket; ?>"></p>
+            <p><label class="label-dossier" for="dateCloture">Date de clôture du ticket :</label><input id="dateCloture"  type="date" disabled="disabled" value="<?php echo $infosTicket->DateFermTicket; ?>"></p>
             <p><label class="label-dossier" for="numcde">Commande concernée : </label><input id="numcde" name="numcde" type="text" disabled="disabled" value="<?php echo $infosTicket->IdCommande ?>">
             <label class="label-dossier-droite" for="statutcde">Statut : </label><input id="statutcde" name="statutcde" type="text" disabled="disabled" value="<?php echo $infosTicket->StatutCommande; ?>"></p>
             <p><label class="label-dossier" for="datePEC">Date de prise en charge du SAV : </label><input id="datePEC" name="datePEC" type="date" disabled="disabled" value="<?php echo $infosTicket->DatePEC; ?>"></p>

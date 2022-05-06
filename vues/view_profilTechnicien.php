@@ -22,7 +22,7 @@ foreach ($infosTechnicien as $key => $tinfo){
   ?>
   <form method="post">
 <center><div class="card" style="width: 18rem;">
-  <img src="../img/silhouette.png" class="card-img-top" alt="silhouette">
+  <img src="img/silhouette.png" class="card-img-top" alt="silhouette">
   <div class="card-body">
     <h5 class="card-title">Détail du profil</h5>
     <p class="card-text">

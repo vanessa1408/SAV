@@ -7,10 +7,14 @@
             require_once("modeles/Recherche_Dossier.class.php");
             require_once("modeles/ClientMgr.class.php");
             require_once("modeles/UserMgr.class.php");
+            require_once("modeles/DetailCommandeMgr.class.php");
             require_once("classes/TicketMgrException.class.php");
             require_once("classes/Client.class.php");
             require_once("classes/Commande.class.php");
             require_once("classes/Article.class.php");
+            require_once("modeles/Recherche_Technicien.class.php");
+            require_once("modeles/Aff_Infos_Technicien.class.php");
+            require_once("modeles/TechniciensMgr.class.php");
             
 
             // Initialisation des données
@@ -41,6 +45,18 @@
             if(isset($_POST['refArticle'])){
                 $numArt = $_POST['refArticle'];
             }
+            if(isset($_GET['IdTypeDossier'])){
+                $IdTypeDossier =$_GET['IdTypeDossier'];
+            }
+            if(isset($_GET['IdTypeInter'])){
+                $IdTypeInter =$_GET['IdTypeInter'];
+            }
+            if(isset($_GET['IdTechnicien'])){
+                $IdTechnicien =$_GET['IdTechnicien'];
+            } 
+            if(isset($_GET['idCommande'])){
+                $IdCommande =$_GET['idCommande'];
+            } 
             if(isset($_POST['codePostal'])){
                 $CPclient = $_POST["codePostal"];
             }
@@ -56,8 +72,8 @@
 
             } 
 
-            if(isset($_GET['idCommande'])){
-                $idcmd = $_GET['idCommande'];
+            if(isset($_GET['IdCommande'])){
+                $idcmd = $_GET['IdCommande'];
             }
             if(isset($_POST['login'])){
                 $user = $_POST['login'];
@@ -102,7 +118,6 @@
                 $datePEC = $_POST['datePEC'];
                 $motif = $_POST['motif'];
                 $obs = $_POST['observation'];
-                $dateCloture = $_POST['dateCloture'];
             }
 
 
@@ -114,6 +129,12 @@
                     break;
                 case 'ctrlconnexion' :
                     $action = UserMgr::getUser();
+                    break;
+                case 'connexionErreur':
+                    header('Refresh:3; url= index.php');
+                    require ('vues/view_header.php');
+                    require ('vues/view_connexion.php');
+                    require('vues/view_footer.php');
                     break;
                 case 'deconnexion' :
                     unset($_SESSION['user']);
@@ -160,7 +181,6 @@
                 case 'diagnostic' :
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
-                    // require ('vues/');
                     require ('vues/view_footer.php');
                 break;
                 case 'creadossier' : 
@@ -190,7 +210,7 @@
                     require ('vues/view_footer.php');
                     break;
                 case 'afficheClient' :
-                    // $modeobjet = PDO::FETCH_CLASS;
+                    
                 if (isset($_GET['IdClient'])){
                         $donnee = ClientMgr::getInfoClient($id);
                     }
@@ -201,7 +221,6 @@
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
                     require ('vues/view_dossierClient.php');
-                    // require ('vues/view_result_dossier.php');
                     require('vues/view_footer.php');
                     break;
                 case 'affTicket' :
@@ -214,8 +233,30 @@
                     require('vues/view_footer.php');
                     break;
 
+                case 'afficheCMD' :
+                    if (isset($_GET['IdCommande'])){
+                            $dossier = DetailsCommandeMgr::getInfoCommande($idcmd);
+                            $contenu = DetailsCommandeMgr::getInfoCommande($idcmd);
+                            $TypInter = TicketMgr::getTypeDossier();
+                            $TypMotif = TicketMgr::getMotif();
+                    }   
+                        require ('vues/view_header.php');
+                        require ('vues/view_nav_modal.php');
+                        require ('vues/view_detailsCommande.php');
+                        require ('vues/view_modal.php');
+                        require ('vues/view_modalCmd.php');
+                        require ('vues/view_footer.php');
+                        break;
+                case 'admin':
+                    $resultRechTechnicien = TechniciensMgr::getTech();
+                    require ('vues/view_header.php');
+                    require ('vues/view_admin.php');
+                    require ('vues/view_footer.php');
+                    break;
+
                 case 'affMAJTicket' : // Appelé quand on enregistre des modifs d'un ticket existant
-                    TicketMgr::updateInfosTicket($idTicket, $dateCrea, $numCmd, $statCmd, $datePEC, $motif, $obs, $dateCloture);
+
+                    TicketMgr::updateInfosTicket($idTicket, $dateCrea, $numCmd, $statCmd, $datePEC, $motif, $obs);
                     $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
                     $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
                     $listDiag=TicketMgr::getListDiagnostic($idTicket);
@@ -224,7 +265,7 @@
                     require ('vues/view_ticket.php');
                     require('vues/view_footer.php');
                     break;
-                case 'affTicketMAJ' :
+                case 'affTicketMAJ' : // Appelé quand on modifie les infos clients
                     ClientMgr::updateInfosClient($idC, $nomC, $prenomC);
                     ClientMgr::updateAdressByIdClient($idC,$adresseC,$cpC,$villeC);
                     $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
@@ -235,7 +276,7 @@
                     require ('vues/view_ticket.php');
                     require('vues/view_footer.php');
                     break;
-                case 'affTicketMAJdiag' :
+                case 'affTicketMAJdiag' : // Appelé quand on ajoute un diagnostic
                     TicketMgr::createDiagnostic($obsDiag,$idTicket);   
                     $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
                     $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
@@ -245,14 +286,84 @@
                     require ('vues/view_ticket.php');
                     require('vues/view_footer.php');
                     break;
-
-
-                case 'afficheCMD' :
+                case 'rechTech':
+                    $resultatNomTechnicien = Recherche_Technicien::getListTechniciens();
                     require ('vues/view_header.php');
-                    require ('vues/view_nav_modal.php');
-                    require ('vues/view_modal.php');
+                    require('vues/view_result_rechTech.php');
                     require ('vues/view_footer.php');
                     break;
+                case 'affTechnicien':
+                    $IdTechnicien = $_GET['IdTechnicien'];
+                    $modeobjet = PDO::FETCH_OBJ;
+                    $infosTechnicien=Aff_Infos_Technicien::getProfilTechnicien($IdTechnicien);
+                    if (isset($_GET['IdTechnicien'])){
+                        $donnee = Aff_Infos_Technicien::getProfilTechnicien($IdTechnicien);
+                    }
+                    require ('vues/view_header.php');
+                    require ('vues/view_profilTechnicien.php');
+                    require ('vues/view_footer.php');
+                    break;
+                case 'creaTech':
+                    require ('vues/view_header.php');
+                    require('vues/view_creaTech.php');
+                    require ('vues/view_footer.php');
+                    break;
+                case 'verifCreaTech' :
+                    $action = TechniciensMgr::createTech();
+                    break;
+                case 'ErrCreaTech' : 
+                    header('Refresh:3;url= index.php?action=creaTech');
+                    require ('vues/view_header.php');
+                    require ('vues/view_creaTech.php');
+                    require('vues/view_footer.php');
+                    break;
+                case 'creaTechMAJ' :
+                    require ('vues/view_header.php');
+                    require ('vues/view_creaTechMAJ.php');
+                    require ('vues/view_footer.php');
+                    break;
+                case 'modifTech' : 
+                    require ('vues/view_header.php');
+                    require ('vues/view_modifTech.php');
+                    require ('vues/view_footer.php');
+                    break;
+                case 'verifModifTech' ;
+                    require ('vues/view_header.php');
+                    require ('vues/view_modifTech.php');
+                    require ('vues/view_footer.php');
+                    break;
+                case 'suppTech':
+                    require ('vues/view_header.php');
+                    require ('vues/view_suppTech.php');
+                    require ('vues/view_footer.php');
+                    break;
+                case 'verifSuppTech' : 
+                    $IdTechSupp = $_POST['IdTechSupp'];
+                    $action = TechniciensMgr::suppTech();
+                case 'suppTechMAJ1' : 
+                    require ('vues/view_header.php');
+                    require ('vues/view_suppTechMAJ1.php');
+                    require ('vues/view_footer.php');
+                    break;
+                case 'suppTechMAJ2' : 
+                    require ('vues/view_header.php');
+                    require ('vues/view_suppTechMAJ2.php');
+                    require ('vues/view_footer.php');
+                    break;
+                case 'recapTicket' :
+                    $IdCommande = $_GET['idCommande'];
+                    $IdTypeDossier = $_GET['IdTypeDossier'];
+                    $IdTypeInter = $_GET['IdTypeInter'];
+                    $IdTechnicien = $_GET['IdTechnicien'];
+                $creaTicket = TicketMgr::creaTicket($IdTypeDossier, $IdTypeInter, $IdCommande, $IdTechnicien);
+                require ('vues/view_header.php');
+                require ('vues/view_nav_modal.php');
+                require ('vues/view_ticketMaj.php');
+                require ('vues/view_footer.php');
+                break;
                 }
+                
+
+
 ?>
 

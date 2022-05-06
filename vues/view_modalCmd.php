@@ -1,14 +1,14 @@
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="cmdModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title list-group-item list-group-item-action active title-list" id="modalLabel"><center> Ticket</center></h5>
       </div>
-        <div class="modal-body">
-            <form role="form" class="was-validated" 
-              action="index.php?action=recapTicket&idCommande=<?php echo $IdCommande ?>&IdTypeDossier=<?php echo $IdTypeDossier?>&IdTypeInter=<?php echo $IdTypeInter ?>&IdTechnicien=<?php echo $IdTechnicien ?>"
-              method="POST">
+        <div class="modal-body" >
+            <form role="form" class="was-validated"
+                   action="index.php?action=recapTicket&idCommande=<?php echo $IdCommande ?>&IdTypeDossier=<?php echo $IdTypeDossier?>&IdTypeInter=<?php echo $IdTypeInter ?>&IdTechnicien=<?php echo $IdTechnicien ?>"
+                   method="POST"  >
                     <div class="form-group">
                         <label for="nomClient"><span class="bi bi-file-person"></span> Nom du client</label>
                         <input type="text" class="form-control is-valid" name="nomClient" required="required" disabled="disabled" value="<?php echo $NomCLient," ", $PrenomClient; ?>">
@@ -23,8 +23,8 @@
                         <input type="date" class="form-control is-valid" name="start" name="trip-start" disabled="disabled" value="<?php echo $DateFacture; ?>">
                     </div>
                     <div class="form-group">
-                        <label for="refArticle"><span class="bi bi-upc-scan"></span> Reference de l'article</label>
-                        <input type="text" class="form-control is-valid" name="refArticle" required="required" disabled="disabled" value="<?php echo $IdArticle; ?>">
+                        <label for="refCommande"><span class="bi bi-upc-scan"></span> Reference de la commande</label>
+                        <input type="text" class="form-control is-valid" name="refCommande" required="required" disabled="disabled" value="<?php echo $IdCommande; ?>">
                     </div>
                     <div class="form-group">
                         <label for="date_open_ticket"><span class="bi bi-calendar3"></span> Date d'ouverture du ticket</label>
@@ -33,7 +33,7 @@
                     </div>
                     <div class="form-group">
                         <label for="motifInter"><span class="bi bi-question-diamond"></span> Motif d'intervention :</label>
-                        <select class="form-select" required id="motifInter">
+                        <select class="form-select" required name="typeDoss">
                           <option selected disabled value="">-- Motif d'intervention --</option>
                           <?php
                           if(isset($TypMotif)){
@@ -45,14 +45,13 @@
                               
                             }
                       }
-                     
+                      
                       ?>
-                    
                         </select>                          
                     </div>
                     <div class="form-group">
                         <label for="interPrevu"><span class="bi bi-bookmark-dash"></span> Intervention prévue </label>
-                        <select class="form-select" required id="interPrevu">
+                        <select class="form-select" required name="interPrevu">
                         <option selected disabled value="">-- Type d intervention --</option>
                         <?php
                         if(isset($TypInter)){
@@ -70,20 +69,19 @@
                     </div>
                     <div class="form-group" id="diag">
                         <label for="diagnostic"><span class="bi bi-clipboard-pulse"></span> Diagnostic</label>
-                        <input type="text" class="form-control is-invalid" name="diagnostic">
+                        <input type="text" class="form-control is-invalid"  name="diagnostic">
                     </div>
                     <div class="form-group">
                         <label for="nomTech"><span class="bi bi-file-person"></span> Technicien</label>
                         <input type="text" class="form-control is-valid" name="nomTech" required="required" disabled="disabled" value="<?php echo $NomTechnicien," ", $PrenomTechnicien," Identifiant : ", $IdTechnicien; ?>">
                     </div>
-                    </br>
-                    
-            </form>
+                    </br>  
         </div>
         <div class="modal-footer">
-                <button type="submit" class="btn btn-primary bi bi-check2-circle" id="myBtn2"> Creer</button>
+                <button type="submit" class="btn btn-primary bi bi-check2-circle"  id="myBtn2"> Creer</button>
                 <button type="button" class="btn btn-danger bi bi-x-circle" data-bs-dismiss="modal"> Annulez</button>
         </div>
+        </form>
       </div>
     </div>
   </div>

@@ -7,13 +7,13 @@ var btnEnrDiag = document.getElementById("enrDiag");
 var divDiag = document.getElementById("addDiag");
 var btnModifTicket = document.getElementById("modifTicket");
 var btnEnrModifTicket = document.getElementById("enrmodifTicket");
+var btnCreerTicket = document.getElementsByClassName("creer_ticket");
 // Abonner les éléments
 
 if(btnModifTicket){
 
     btnModifTicket.addEventListener("click", function(){
         document.getElementById('dateCrea').disabled = false;
-        document.getElementById('dateCloture').disabled = false;
         document.getElementById('numcde').disabled = false;
         document.getElementById('statutcde').disabled = false;
         document.getElementById('datePEC').disabled = false;
@@ -57,7 +57,15 @@ if(btnEditDiag){
 
     });
 }
-
+/* Une boucle qui parcourt tous les boutons avec la classe "creer_ticket" et ajoute un écouteur
+d'événement à chacun d'eux. */
+if (btnCreerTicket){
+    for(let btn of btnCreerTicket){
+        btn.addEventListener('click',function(){
+            document.getElementById('refArticle').value = btn.getAttribute('name');
+        })
+    }
+}
 
 // Fonctions
 
