@@ -1,4 +1,5 @@
 <?php
+    //commentaire inutile
         session_start();
 
             require_once("modeles/DbSav.class.php");
