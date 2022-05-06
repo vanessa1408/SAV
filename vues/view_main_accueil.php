@@ -11,11 +11,11 @@
 
 <?php
                 foreach ($listeTicket as $key => $tTicket) {
-                        $idTicket = $tTicket[0];
-                        $nom = $tTicket[1];
-                        $prenom = $tTicket[2];
-                        $idCommande = $tTicket[3];
-                        $typeInter = $tTicket[4];
+                        $idTicket = $tTicket->idTicket;
+                        $nom = $tTicket->NomClient;
+                        $prenom = $tTicket->PrénomClient;
+                        $idCommande = $tTicket->IdCommande;
+                        $typeInter = $tTicket->LibType;
                         echo '<a href="index.php?action=affTicket&id='. $idTicket . '&idCommande=' . $idCommande . '" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>' 
                         . $idTicket . ' - ' . $nom . " " . $prenom . " - N° Cmd : " . $idCommande . '<p class="type-dossier">' . $typeInter . '</p></a>';
                 }

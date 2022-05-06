@@ -3,13 +3,20 @@
 
     class TicketMgr {
 
-        public static function getListeTickets(int $typageRet = PDO::FETCH_CLASS ){
+
+        /**
+         * Retourne la liste des tickets en cours 
+         * @param string $typageRet // Typage du retour
+         * @return array $tabTicket
+         */
+        public static function getListeTickets(string $typageRet = PDO::FETCH_CLASS ){
             // Préparation de la requête SQL
             $sql="SELECT idTicket, c.NomClient, c.PrénomClient, k.IdCommande, LibType 
             FROM ticketsav t
             JOIN commande k ON k.IdCommande = t.IdCommande
             JOIN client c ON c.IdCLient = k.IdCLient
-            JOIN type_dossier td ON td.IdTypeDossier = t.IdTypeDossier";
+            JOIN type_dossier td ON td.IdTypeDossier = t.IdTypeDossier
+            WHERE DateFermTicket is NULL";
             // Connexion
             $listTickets = DbSav::getConnexion()->query($sql);
             if($typageRet===PDO::FETCH_CLASS){
@@ -33,7 +40,13 @@
             return $tabTicket;
         }
 
-        public static function getInfosTicket(int $idTicket, int $typageRet = PDO::FETCH_CLASS ){
+        /**
+         * Retourne toutes les infos du ticket par son ID 
+         * @param int $idTicket
+         * @param string $typageRet // Typage du retour
+         * @return array $tabTicket
+         */
+        public static function getInfosTicket(int $idTicket, string $typageRet = PDO::FETCH_CLASS ){
              // Préparation de la requête SQL
              $sql="SELECT t.IdTicket, DateAppelClient, DatePEC, DateFermTicket, Motif, Observations, t.IdCommande, DateCommande, StatutCommande, d.LibDiagnostic, IdDiag, DateDiag, LibTypeInter,LibType FROM ticketsav t
              JOIN commande cd on t.IdCommande = cd.IdCommande
@@ -63,6 +76,12 @@
             return $tabTicket;
         }
 
+         /**
+         * Retourne les tickets à partir d'une recherche qui parcourt les nom, prenom, n° commande, n°ticket  
+         * @param string $recherche
+         * @param string $typageRet // Typage du retour
+         * @return array $tabTicket
+         */
         public static function getTicketbyMot(string $recherche, int $typageRet = PDO::FETCH_CLASS ){
             // Préparation de la requête SQL
             $sql="SELECT `IdTicket`, cl.NomClient, cl.PrénomClient, cd.IdCommande, LibTypeInter
@@ -93,17 +112,12 @@
            return $tabTicket;
        }
 
+       /**
+         * Retourne l'historique des diagnostiques d'un Ticket  
+         * @param int $idTicket
+         * @return array $list
+         */
 
-    //    public static function updateDiagnostic(string $libelleDiag, int $idDiag){
-          
-    //     // Préparation de la requête SQL
-    //     $sql="UPDATE diagnostic SET LibDiagnostic = '$libelleDiag' WHERE IdDiag = $idDiag";
-    //     // Connexion
-    //     $connexion = DbSav::getConnexion()->query($sql);
-            
-
-    //     }
-    
         public static function getListDiagnostic(int $idTicket) {
         // Préparation de la requête SQL
         $sql="SELECT `LibDiagnostic`,`DateDiag` FROM `diagnostic` WHERE `IdTicket`= $idTicket";
@@ -121,6 +135,13 @@
 
         }
 
+        /**
+        * Ajoute un diagnostique à un Ticket  
+        * @param string $libelleDiag
+        * @param int $idTicket
+        * @param string $date
+        * @return void
+        */
 
        public static function createDiagnostic(string $libelleDiag, int $idTicket, string $date = null) {
         // Préparation de la requête SQL
@@ -130,6 +151,18 @@
 
         }
 
+        /**
+        * Met à jour les infos d'un Ticket  
+        * @param string $libelleDiag
+        * @param int $idTicket
+        * @param string $dateCrea
+        * @param int $numCmd
+        * @param string $statCmd
+        * @param string $datePEC
+        * @param string $motif
+        * @param string $obs
+        * @return void
+        */
         public static function updateInfosTicket(int $idTicket, string $dateCrea, int $numCmd, string $statCmd, string $datePEC, string $motif, string $obs){
             $sql="UPDATE `ticketsav` SET `DateAppelClient`='$dateCrea',`DatePEC`='$datePEC',`Motif`='$motif',`Observations`='$obs',`IdCommande`='$numCmd' WHERE `IdTicket`=$idTicket";
             // Connexion
