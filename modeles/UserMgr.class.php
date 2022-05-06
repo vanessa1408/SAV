@@ -19,6 +19,9 @@ class UserMgr {
             if ($result[0] == 1) // login et password OK
             {
                 $_SESSION['user'] = $user;
+                if ($_SESSION['user'] == 'adminsav'){
+                    header('location:index.php?action=admin');
+                } else {
                 //var_dump($user);
                 //$_SESSION['user'] = $_POST['login'];
                 //var_dump($_SESSION['user']);
@@ -26,31 +29,24 @@ class UserMgr {
                 header('location:index.php?action=accueil');
                 //echo "Connexion OK";
                 $action = 'accueil';
-                
-            }else {
-                header('location:index.php?action=connexion');
-                echo "Connexion NOK";
-                $action = 'connexion';
-            }
-        }  
+            } 
+        } else {
+                header('location:index.php?action=connexionErreur');
+                //echo "Connexion NOK";
+                $action = 'connexionErreur';
+
+            }  
             DbSav::disconnect();
 
             return $action;
-                        
-    }
+        }
+        
+        
+        //Déconnecte du serveur
 
-    public static function getInfosUser(string $user){
-        //Préparation de la requête SQL
-        $sql="SELECT PrenomTechnicien, NomTechnicien, IdService FROM technicien WHERE 
-        Login = '$user'";
-        //Connexion
-        $connexion = DbSav::getConnexion()->query($sql);
-        $identite = $connexion->fetch(PDO::FETCH_OBJ);
+        //Retourne l'utilisateur connecté
+        //return $_SESSION;
+        
 
-    // Deconnecte du serveur
-    DbSav::disconnect();
-
-    // Retourne le tableau
-    return $identite;
     }
 }
