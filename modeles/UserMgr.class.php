@@ -3,7 +3,20 @@
 class UserMgr {
 
     // Initialisation des variables
-    
+    public static function getInfosUser(string $user){
+        //Préparation de la requête SQL
+        $sql="SELECT PrenomTechnicien, NomTechnicien, IdService FROM technicien WHERE 
+        Login = '$user'";
+        //Connexion
+        $connexion = DbSav::getConnexion()->query($sql);
+        $identite = $connexion->fetch(PDO::FETCH_OBJ);
+
+    // Deconnecte du serveur
+    DbSav::disconnect();
+
+    // Retourne le tableau
+    return $identite;
+    }
 
     public static function getUser(){
         $user = $_POST['login'];

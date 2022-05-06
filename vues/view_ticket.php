@@ -1,3 +1,5 @@
+<?php var_dump($_POST) ?>
+
 <div class="main-accueil mx-auto">
     
     <div class="infos-dossier">            <form method="POST">
