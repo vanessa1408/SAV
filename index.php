@@ -17,11 +17,7 @@
 
             $action = 'connexion';
 
-            // $action = 'accueil';
-
-
             // Détermination de l'action en cours
-            // if(empty($_SESSION) ? $action = 'connexion' : $action = 'accueil');
 
             if(isset($_GET['action'])){
                 $action = $_GET['action'];
@@ -121,7 +117,6 @@
                 case 'diagnostic' :
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
-                    // require ('vues/');
                     require ('vues/view_footer.php');
                 break;
                 case 'creadossier' : 
@@ -151,7 +146,7 @@
                     require ('vues/view_footer.php');
                     break;
                 case 'afficheClient' :
-                    // $modeobjet = PDO::FETCH_CLASS;
+                    
                 if (isset($_GET['IdClient'])){
                         $donnee = ClientMgr::getInfoClient($id);
                     }

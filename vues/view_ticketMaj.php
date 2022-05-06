@@ -7,6 +7,3 @@
             else { echo 'en cours'; }   ; ?> - Ticket creer -</legend>
     </div>   
   
-<?php
-//var_dump($creaTicket);
-?>

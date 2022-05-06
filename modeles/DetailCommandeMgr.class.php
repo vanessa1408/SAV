@@ -4,6 +4,14 @@
 
     
 class DetailsCommandeMgr {
+    /**
+     * Je vais obtenir toutes les données de toutes les tables de la base de données, puis les
+     * filtre jusqu'à la ligne voulu.
+     * 
+     * @param Idcmd l'identifiant de la commande
+     * 
+     * @return Un tableau de tableaux.
+     */
     public static function getInfoCommande($Idcmd){
         $connexion = DbSav::getConnexion();
         $resultat = $connexion->query("SELECT commande.IdCommande, commande.DateCommande, commande.StatutCommande, commande.IdClient, commande.IdFacture,
@@ -28,6 +36,13 @@ class DetailsCommandeMgr {
         $tab = $resultat->fetchAll();
         return $tab;
     }
+   /**
+    * Il renvoie un tableau de tous les articles d'une commande donnée.
+    * 
+    * @param Idcmd l'identifiant de la commande
+    * 
+    * @return Un tableau de tableaux.
+    */
     public static function getAllArticle($Idcmd){
         $connexion = DbSav::getConnexion();
         $resultat = $connexion->query("SELECT contenir.IdArticle, article.NomArticle FROM `contenir` JOIN article ON article.IdArticle = contenir.IdArticle WHERE contenir.IdCommande = '$Idcmd'");

@@ -2,12 +2,22 @@
 
 class article {
 
+/* Il définit les variables qui seront utilisées dans la classe. */
     private $IdArticle;
     private $NomArticle;
     private $StockPhysiqueArticle;
     private $StockRebusArticle;
     private $StockSAVArticle;
 
+   /**
+    * 
+    * 
+    * @param int IdArticle L'identifiant de l'article
+    * @param string NomArticle Le nom de l'article
+    * @param int StockPhysiqueArticle Le nombre d'articles en stock
+    * @param int StockRebusArticle Le nombre d'articles qui sont cassés et ne peuvent pas être vendus.
+    * @param int StockSAVArticle Le nombre d'articles dans le SAV
+    */
     public function __construct(int $IdArticle, string $NomArticle, int $StockPhysiqueArticle, int $StockRebusArticle, int $StockSAVArticle) {
         $this->setidClient($IdArticle);
         $this->setNomclient($NomArticle);
@@ -58,4 +68,4 @@ class article {
     }
 
 
-} 
+}

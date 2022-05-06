@@ -16,10 +16,7 @@
             <label for="codePostal" class="form-label">Code Postal</label>
             <input type="text" class="form-control" name="codePostal" placeholder="Recherchez un client par Code postal...">
         </div>
-        <!-- <div class="mb-3">
-            <label for="VilleClient" class="form-label">Ville</label>
-            <input type="text" class="form-control" name="VilleClient" placeholder="Recherchez un client par Ville...">
-        </div> -->
+        
         <button type="submit" class="btn btn-primary">Recherchez</button>
         <button type="reset" class="btn btn-danger">Annulez </button>
     </form>

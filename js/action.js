@@ -10,6 +10,7 @@ var btnCreerTicket = document.getElementsByClassName("creer_ticket");
 
 
 // Abonner les éléments
+/* Rendre les champs modifiables. */
 if (btnModifClient){
     btnModifClient.addEventListener("click", function(){
         document.getElementById('nom').disabled = false;
@@ -22,6 +23,8 @@ if (btnModifClient){
     });
 }
 
+/* Une boucle qui parcourt tous les boutons avec la classe "creer_ticket" et ajoute un écouteur
+d'événement à chacun d'eux. */
 if (btnCreerTicket){
     for(let btn of btnCreerTicket){
         btn.addEventListener('click',function(){

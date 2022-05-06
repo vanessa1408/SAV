@@ -104,15 +104,15 @@
                             $NomTechnicien = $tdossier[29];
                             $PrenomTechnicien = $tdossier[30];
                         }
-                    // }
-                    // foreach($contenu as $key=> $tContenu)
-                    //     {
-                    //         $IdArticle = $tContenu[0];
-                    //         $NomArticle = $tContenu[1];
+                    }
+                    foreach($contenu as $key=> $tContenu)
+                        {
+                            $IdArticle = $tContenu[0];
+                            $NomArticle = $tContenu[1];
                     
                 echo '<p><label class="label-dossier" for="nomarticle">Article : </label><label> '.$NomArticle.'</label>
                         <label class="label-dossier-droite" for="statutcde">Statut : </label><input name="statutcde" type="text" disabled="disabled" value="'.$StatutCommande.'">
-                        <button type="button" name="'.$IdArticle.'" class="btn-primary creer_ticket" data-bs-toggle="modal" data-bs-target="#exampleModal">Creer ticket </button>';
+                        <button type="button" name="'.$IdArticle.'" class="btn-primary creer_ticket" data-bs-toggle="modal" data-bs-target="#exampleModal" disabled>Creer ticket </button>';
                         
                     if(isset($IdTicket)){
                 echo '  <label class="float-end"><a href="index.php?action=affTicket&id='.$IdTicket.'&idCommande='.$IdCommande.'">Ticket en cours</a></label>
@@ -128,6 +128,3 @@
     </div>  
 </div>   
 
-<?php 
-// var_dump($dossier);
-?>

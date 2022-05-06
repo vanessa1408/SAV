@@ -3,6 +3,11 @@
 
     class TicketMgr {
 
+       /**
+        * > Cette fonction renvoie un tableau d'objets de type Ticket
+        * 
+        * @param int typageRet Le type de retour que vous souhaitez.
+        */
         public static function getListeTickets(int $typageRet = PDO::FETCH_CLASS ){
             // Préparation de la requête SQL
             $sql="SELECT IdTicket, c.NomClient, c.PrénomClient, k.IdCommande, LibType 
@@ -33,6 +38,14 @@
             return $tabTicket;
         }
 
+       /**
+        * Il obtient les informations d'un ticket de la base de données
+        * 
+        * @param int idTicket l'identifiant du ticket
+        * @param int typageRet PDO::FETCH_CLASS ou PDO::FETCH_ASSOC
+        * 
+        * @return Un tableau d'objets
+        */
         public static function getInfosTicket(int $idTicket, int $typageRet = PDO::FETCH_CLASS ){
             // Préparation de la requête SQL
             $sql="SELECT t.IdTicket, DateAppelClient, DatePEC, DateFermTicket, Motif, Observations, t.IdCommande, DateCommande, StatutCommande, d.LibDiagnostic, IdDiag, DateDiag, LibTypeInter,LibType FROM ticketsav t
@@ -63,6 +76,9 @@
            return $tabTicket;
        }
 
+      /**
+       * Il obtient le type de dossier de la base de données.
+       */
        public static function getTypeDossier() {
             $connexion = DbSav::getConnexion();
             $resultat = $connexion->query("SELECT * FROM typeinter");
@@ -70,6 +86,9 @@
             return $tab;
        }
 
+     /**
+      * Il récupère les données de la base de données et les renvoie sous forme de tableau.
+      */
        public static function getMotif() {
             $connexion = DbSav::getConnexion();
             $resultat = $connexion->query("SELECT * FROM type_dossier");
@@ -77,6 +96,17 @@
             return $tab;
        }
 
+      /**
+       * Il crée un ticket dans la base de données.
+       * 
+       * @param IdTypeDossier 
+       * @param IdTypeInter 
+       * @param IdCommande Le numéro de commande
+       * @param idTechnicien l'identifiant du technicien qui est connecté
+       * @param date la date de l'appel
+       * 
+       * @return Le résultat de la requête.
+       */
        public static function creaTicket($IdTypeDossier, $IdTypeInter, $IdCommande, $idTechnicien, $date=null) {
             $connexion = DbSav::getConnexion();
             $resultat = $connexion->query("INSERT INTO `ticketsav`(`IdTypeDossier`, `IDTypeInter`, 
