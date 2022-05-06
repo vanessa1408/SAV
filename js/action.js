@@ -5,8 +5,25 @@ var btnEnrClient = document.getElementById("enregistrerClient");
 var btnEditDiag = document.getElementById("editDiag");
 var btnEnrDiag = document.getElementById("enrDiag");
 var divDiag = document.getElementById("addDiag");
-
+var btnModifTicket = document.getElementById("modifTicket");
+var btnEnrModifTicket = document.getElementById("enrmodifTicket");
 // Abonner les éléments
+
+if(btnModifTicket){
+
+    btnModifTicket.addEventListener("click", function(){
+        document.getElementById('dateCrea').disabled = false;
+        document.getElementById('dateCloture').disabled = false;
+        document.getElementById('numcde').disabled = false;
+        document.getElementById('statutcde').disabled = false;
+        document.getElementById('datePEC').disabled = false;
+        document.getElementById('motif').disabled = false;
+        document.getElementById('observation').disabled = false;
+        btnModifTicket.style.display = 'none';
+        btnEnrModifTicket.style.display = 'block';
+    });
+}
+
 
 if(btnModifClient){
 

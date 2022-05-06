@@ -1,21 +1,26 @@
 <div class="main-accueil mx-auto">
     
-    <div class="infos-dossier">
+    <div class="infos-dossier">            <form method="POST">
         <legend class="list-group-item list-group-item-action active title-list">Ticket n° <?php echo $infosTicket->IdTicket; ?> - Statut du ticket : 
             <?php if(!empty($infosTicket->DateFermTicket)) { echo 'clôturé'; }
-            else { echo 'en cours'; }   ; ?><input class="float-end" type="button" value="Modifier"></legend>
+            else { echo 'en cours'; }   ; ?>
 
-                        <p><label class="label-dossier" for="typeDoss">Type de ticket : </label><input name="typeDoss" type="text" disabled="disabled" value="<?php echo $infosTicket->LibType; ?>">
-                        <label class="label-dossier-droite" for="typeInter">Type d'intervention : </label><input name="typeInter" type="text" disabled="disabled" value="<?php echo $infosTicket->LibTypeInter; ?>"></p>
+            <input type="hidden" name="action" value="affMAJTicket">
+            <input id="modifTicket" class="float-end" type="button" value="Modifier">
+            <input id="enrmodifTicket" class="float-end" type="submit" value="Enregistrer">
+            </legend>
+            <input type="hidden" name="idTicket" value="<?php echo $infosTicket->IdTicket; ?>">
+                        <p><label class="label-dossier" for="typeDoss">Type de ticket : </label><input id="typeDoss" name="typeDoss" type="text" disabled="disabled" value="<?php echo $infosTicket->LibType; ?>">
+                        <label class="label-dossier-droite" for="typeInter">Type d'intervention : </label><input id="typeInter" name="typeInter" type="text" disabled="disabled" value="<?php echo $infosTicket->LibTypeInter; ?>"></p>
 
-            <p><label class="label-dossier" for="dateCrea">Date de création du ticket :</label><input name="dateCrea" type="date" disabled="disabled" value="<?php echo $infosTicket->DateAppelClient; ?>"></p>
-            <p><label class="label-dossier" for="dateCloture">Date de clôture du ticket :</label><input name="dateCloture" type="date" disabled="disabled" value="<?php echo $infosTicket->DateFermTicket; ?>"></p>
-            <p><label class="label-dossier" for="numcde">Commande concernée : </label><input name="numcde" type="text" disabled="disabled" value="<?php echo $infosTicket->IdCommande ?>">
-            <label class="label-dossier-droite" for="statutcde">Statut : </label><input name="statutcde" type="text" disabled="disabled" value="<?php echo $infosTicket->StatutCommande; ?>"></p>
-            <p><label class="label-dossier" for="datePEC">Date de prise en charge du SAV : </label><input name="datePEC" type="date" disabled="disabled" value="<?php echo $infosTicket->DatePEC; ?>"></p>
-            <p><label class="label-dossier" for="motif">Motif du ticket : </label><input name="motif" type="text" disabled="disabled" value="<?php echo $infosTicket->Motif; ?>"></p>
+            <p><label class="label-dossier" for="dateCrea">Date de création du ticket :</label><input id="dateCrea" name="dateCrea" type="date" disabled="disabled" value="<?php echo $infosTicket->DateAppelClient; ?>"></p>
+            <p><label class="label-dossier" for="dateCloture">Date de clôture du ticket :</label><input id="dateCloture" name="dateCloture" type="date" disabled="disabled" value="<?php echo $infosTicket->DateFermTicket; ?>"></p>
+            <p><label class="label-dossier" for="numcde">Commande concernée : </label><input id="numcde" name="numcde" type="text" disabled="disabled" value="<?php echo $infosTicket->IdCommande ?>">
+            <label class="label-dossier-droite" for="statutcde">Statut : </label><input id="statutcde" name="statutcde" type="text" disabled="disabled" value="<?php echo $infosTicket->StatutCommande; ?>"></p>
+            <p><label class="label-dossier" for="datePEC">Date de prise en charge du SAV : </label><input id="datePEC" name="datePEC" type="date" disabled="disabled" value="<?php echo $infosTicket->DatePEC; ?>"></p>
+            <p><label class="label-dossier" for="motif">Motif du ticket : </label><input id="motif" name="motif" type="text" disabled="disabled" value="<?php echo $infosTicket->Motif; ?>"></p>
             <p><label class="label-dossier" for="observation">Observation : </label>
-            <textarea name="observation"class="form-control" aria-label="With textarea" disabled="disabled"><?php echo $infosTicket->Observations; ?></textarea></p>
+            <textarea id="observation" name="observation"class="form-control" aria-label="With textarea" disabled="disabled"><?php echo $infosTicket->Observations; ?></textarea></p></form>
     </div>   
     <div class="infos-dossier">
         <form class="form-client" method="GET" action="#">

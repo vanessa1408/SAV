@@ -28,6 +28,9 @@
                     unset($_SESSION['user']);
                 }
             }
+            if(isset($_POST['action'])){
+                $action = $_POST['action'];
+            }
             if(isset($_POST['nomClient'])){
                 $nom = $_POST["nomClient"];
             }
@@ -64,7 +67,7 @@
 
             // Récupère les données du formulaire de modification infos Client
            
-            if($action == 'affTicket' || $action =='affTicketMAJ' || $action=='affTicketMAJdiag'){
+            if($action == 'affTicket' || $action =='affTicketMAJ' || $action=='affTicketMAJdiag' || $action=='affMAJTicket'){
                 $idTicket = $_GET['id'];
                 $idCommande = $_GET['idCommande'];
                 $modeobjet = PDO::FETCH_OBJ;
@@ -88,6 +91,17 @@
                     $idDiag = -1;
                 }
 
+            }
+
+            if($action=='affMAJTicket'){
+                $dateCrea = $_POST['dateCrea'];
+                $idTicket = $_POST['idTicket'];
+                $numCmd = $_POST['numcde'];
+                $statCmd = $_POST['statutcde'];
+                $datePEC = $_POST['datePEC'];
+                $motif = $_POST['motif'];
+                $obs = $_POST['observation'];
+                $dateCloture = $_POST['dateCloture'];
             }
 
 
@@ -190,6 +204,17 @@
                     require('vues/view_footer.php');
                     break;
                 case 'affTicket' :
+                    $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
+                    $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
+                    $listDiag=TicketMgr::getListDiagnostic($idTicket);
+                    require ('vues/view_header.php');
+                    require('vues/view_nav.php');
+                    require ('vues/view_ticket.php');
+                    require('vues/view_footer.php');
+                    break;
+
+                case 'affMAJTicket' : // Appelé quand on enregistre des modifs d'un ticket existant
+                    TicketMgr::updateInfosTicket($idTicket, $dateCrea, $numCmd, $statCmd, $datePEC, $motif, $obs, $dateCloture);
                     $infosTicket=TicketMgr::getInfosTicket($idTicket,$modeobjet);  
                     $infosClient=ClientMgr::getInfoClientByArt($idCommande,$modeobjet);
                     $listDiag=TicketMgr::getListDiagnostic($idTicket);

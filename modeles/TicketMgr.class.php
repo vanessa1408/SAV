@@ -129,6 +129,15 @@
         $connexion = DbSav::getConnexion()->query($sql);
 
         }
+
+        public static function updateInfosTicket(int $idTicket, string $dateCrea, int $numCmd, string $statCmd, string $datePEC, string $motif, string $obs, string $dateCloture){
+            $sql="UPDATE `ticketsav` SET `DateAppelClient`='$dateCrea',`DatePEC`='$datePEC',`DateFermTicket`='$dateCloture',`Motif`='$motif',`Observations`='$obs',`IdCommande`='$numCmd' WHERE `IdTicket`=$idTicket";
+            // Connexion
+            $connexion = DbSav::getConnexion()->query($sql);
+
+        }
+
+
     }
 
 ?>
