@@ -24,7 +24,6 @@ if(btnModifClient){
 if(btnEditDiag){
 
     btnEditDiag.addEventListener("click", function(){
-        document.getElementById('obsDiag').disabled = false;
         btnEditDiag.style.display = 'none';
         btnEnrDiag.style.display = 'block';
         
