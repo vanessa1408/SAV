@@ -4,7 +4,7 @@
     require_once("modeles/DbSav.class.php");
 
     class TechniciensMgr {
-        public static function getInfoTechByNom($NomTechnicien){
+        public static function getInfoTechByNom($nomTechnicien){
             $connexion = DbSav::getConnexion();
             $resultat = $connexion->query("SELECT NomTechnicien, PrenomTechnicien, Mail
             FROM `technicien`
@@ -24,28 +24,28 @@
      }
 
      public static function createTech(){
-        $CreaNomTech = $_POST['CreaNomTech'];
-        $CreaPrenomTech = $_POST['CreaPrenomTech'];
-        $CreaMailTech = $_POST['CreaMailTech'];
-        $CreaLogTech = $_POST['CreaLogTech'];
-        $CreaPwdTech = $_POST['CreaPwdTech'];
-        $CreaServTech = $_POST['Idservice'];
+        $creaNomTech = $_POST['creaNomTech'];
+        $creaPrenomTech = $_POST['creaPrenomTech'];
+        $creaMailTech = $_POST['creaMailTech'];
+        $creaLogTech = $_POST['creaLogTech'];
+        $creaPwdTech = $_POST['creaPwdTech'];
+        $creaServTech = $_POST['idservice'];
 
          //Préparation requête SQL création technicien
          $sql="INSERT INTO technicien (NomTechnicien, PrenomTechnicien, Login, Password, Mail, IdService)
-                 VALUES ('$CreaNomTech', '$CreaPrenomTech', '$CreaLogTech', '$CreaPwdTech', '$CreaMailTech', '$CreaServTech')";
+                 VALUES ('$creaNomTech', '$creaPrenomTech', '$creaLogTech', '$creaPwdTech', '$creaMailTech', '$creaServTech')";
         //Préparation requête SQL controle avant création technicien
-        $sqlCtrl="SELECT COUNT(*) FROM technicien WHERE '$CreaMailTech' LIKE Mail OR '$CreaLogTech' LIKE Login
-        OR '$CreaPwdTech' = Password";
+        $sqlCtrl="SELECT COUNT(*) FROM technicien WHERE '$creaMailTech' LIKE Mail OR '$creaLogTech' LIKE Login
+        OR '$creaPwdTech' = Password";
         //Controle pour éviter les doublons des champs Mail, Login et Password
-        $CtrlcreaNewTech = DbSav::getConnexion()->query($sqlCtrl);
-        $resCtrl = $CtrlcreaNewTech->fetch();
+        $ctrlcreaNewTech = DbSav::getConnexion()->query($sqlCtrl);
+        $resCtrl = $ctrlcreaNewTech->fetch();
         if ($resCtrl[0] != 0){ //Présence de doublons dans les champs Mail, Login ou Password
             $action='ErrCreaTech';
             header('location:index.php?action=creaTech');
             $action='ErrCreaTech';
         } else { //Aucun doublon ==> Création du nouveau technicien
-            $CreaNewTech = DbSav::getConnexion()->query($sql);
+            $creaNewTech = DbSav::getConnexion()->query($sql);
             header('location:index.php?action=creaTechMAJ');
             $action = 'creaTechMAJ';
         }
@@ -61,28 +61,28 @@
  * @return void
  */
     public static function suppTech(){
-        $IdTechSupp = $_POST['IdTechSupp'];
+        $idTechSupp = $_POST['idTechSupp'];
         //Préparation des requêtes
         //sql1 = Supprime le technicien si aucun ticket n'est attribué à ce technicien
         //sql2 = Désactive les droits de connexion si au moins 1 ticket est attribué à ce technicien
-        $sql1="DELETE FROM technicien WHERE technicien.IdTechnicien = '$IdTechSupp'";
+        $sql1="DELETE FROM technicien WHERE technicien.IdTechnicien = '$idTechSupp'";
         $sql2="UPDATE technicien
                 SET Mail = '',
                     Login = '',
                     Password = '',
                     IdService = NULL
-                WHERE '$IdTechSupp' = IdTechnicien";
+                WHERE '$idTechSupp' = idTechnicien";
         //Requête pour récupérer le nombre de tickets attribués à un technicien
         $sqlCtrlTicketTech = "SELECT COUNT(*) FROM ticketsav
-                            WHERE IdTechnicien = '$IdTechSupp'";
+                            WHERE IdTechnicien = '$idTechSupp'";
         //Contrôle du nombre de tickets attribués au technicien
-        $CtrlNbTickets = DbSav::getConnexion()->query($sqlCtrlTicketTech);
-        $resCtrlNbTickets = $CtrlNbTickets->fetch();
+        $ctrlNbTickets = DbSav::getConnexion()->query($sqlCtrlTicketTech);
+        $resCtrlNbTickets = $ctrlNbTickets->fetch();
         if ( $resCtrlNbTickets[0] == 0){
-            $Supp1Tech = DbSav::getConnexion()->query($sql1);
+            $supp1Tech = DbSav::getConnexion()->query($sql1);
             $action = "suppTechMAJ1";
         } else {
-            $Supp2Tech = DbSav::getConnexion()->query($sql2);
+            $supp2Tech = DbSav::getConnexion()->query($sql2);
             $action = "suppTechMAJ2";
         }
         DbSav::disconnect();
@@ -137,7 +137,7 @@
          * @return un enregistrement.
          */
         public static function getTechnicienById(
-                                                int $IdTechnicien,
+                                                int $idTechnicien,
                                                 int $choix = PDO::FETCH_ASSOC) {
         //préparer la requête SQL
         $sql = "SELECT IdTechnicien, NomTechnicien, PrenomTechnicien, Mail WHERE IdTechnicien = ?";
@@ -146,7 +146,7 @@
         $resultset = ConnectGestionSav::getConnexion()->prepare($sql);
 
         //Executer le resultset
-        $resultset->execute(array($IdTechnicien));
+        $resultset->execute(array($idTechnicien));
 
         //Récupère le seul enregistrement possible
         if ($choix === PDO::FETCH_CLASS) {
@@ -178,7 +178,7 @@
          * 
          * @return Un tableau de tableaux associatifs.
          */
-        public static function getTechnicienByName(string $NomTechnicien,
+        public static function getTechnicienByName(string $nomTechnicien,
                                                     int $choix = PDO::FETCH_ASSOC) {
             //préparer la requête SQL
             $sql = "SELECT IdTechnicien, NomTechnicien, PrenomTechnicien, Mail WHERE LOWER(NomTechnicien) LIKE LOWER(:NomTechnicien)";
@@ -187,7 +187,7 @@
             $resultset = DbSav::getConnexion()->prepare($sql);
 
             //Executer le Resultset
-            $resultset->execute(array(':NomTechnicien'=>'%'.$NomTechnicien.'%'));
+            $resultset->execute(array(':NomTechnicien'=>'%'.$nomTechnicien.'%'));
 
             //Récupère les enregistrements
             if ($choix === PDO::FETCH_CLASS) {
@@ -244,14 +244,14 @@
         * 
         * @return int Le nombre de lignes affectées par la requête.
         */
-       public static function delTechnicienById(int $IdTechnicien) : int {
+       public static function delTechnicienById(int $idTechnicien) : int {
            //Préparer la requête SQL
             $sql = "DELETE FROM technicien WHERE IdTechnicien=?";
 
             //Préparer le Resultset (PDOstatement) à partir de la connexion
             $resultset = DbSav::getConnexion()->prepare($sql);
 
-            $res = $resultset->execute(array($IdTechnicien));
+            $res = $resultset->execute(array($idTechnicien));
 
             $nombre = $resultset->rowCount();
 

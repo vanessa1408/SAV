@@ -2,38 +2,38 @@
 
 class Client {
 
-    private $IdClient;
-    private $NomClient;
-    private $PrénomClient;
+    private $idClient;
+    private $nomClient;
+    private $prenomClient;
 
-    public function __construct(int $IdClient, string $NomClient, string $PrénomClient) {
+    public function __construct(int $idClient, string $nomClient, string $prenomClient) {
         $this->setidClient($idClient);
-        $this->setNomclient($NomClient);
-        $this->setPrénomClient($PrénomClient);
+        $this->setNomclient($nomClient);
+        $this->setPrénomClient($prenomClient);
     }
 
     public function getIdClient() {
-        return $this->IdClient;
+        return $this->idClient;
     }
 
     private function setIdClient() {
-        $this->IdClient = $IdClient;
+        $this->idClient = $idClient;
     }
 
     public function getNomClient() {
-        return $this->NomClient;
+        return $this->nomClient;
     }
 
     private function setNomClient() {
-        $this->NomClient = $NomClient;
+        $this->nomClient = $nomClient;
     }
 
     public function getPrénomClient() {
-        return $this->PrénomClient;
+        return $this->prenomClient;
     }
     
     private function setPrénomClient() {
-        $this->PrénomClient = $PrénomClient;
+        $this->prenomClient = $prenomClient;
     }
 
 }

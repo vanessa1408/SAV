@@ -5,8 +5,8 @@
             <input type="text" class="form-control" name="nomClient" placeholder="Recherchez un client par nom...">
         </div>
         <div class="mb-3">
-            <label for="Ncmd" class="form-label">N° de commande</label>
-            <input type="text" class="form-control" name="Ncmd" placeholder="Recherchez un client par N° Commande...">
+            <label for="ncmd" class="form-label">N° de commande</label>
+            <input type="text" class="form-control" name="ncmd" placeholder="Recherchez un client par N° Commande...">
         </div>
         <div class="mb-3">
             <label for="refArticle" class="form-label">Reference de l'article</label>

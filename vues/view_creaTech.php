@@ -5,16 +5,16 @@
 <form action="index.php?action=verifCreaTech" method="post">
 
 <label>Nom</label>
-<input type="text" for="CreaNomTech" name="CreaNomTech" required="required"><br/><br/>
+<input type="text" for="CreaNomTech" name="creaNomTech" required="required"><br/><br/>
 <label>Prénom</label>
-<input type="text" for="CreaPrenomTech" name="CreaPrenomTech" required="required"><br/><br/>
+<input type="text" for="CreaPrenomTech" name="creaPrenomTech" required="required"><br/><br/>
 <label>Mail</label>
-<input type="email" for="CreaMailTech" name="CreaMailTech" required="required"><br/><br/>
+<input type="email" for="CreaMailTech" name="creaMailTech" required="required"><br/><br/>
 <label>Login</label>
-<input type="text" for="CreaLogTech" name="CreaLogTech" required="required"><br/><br/>
+<input type="text" for="CreaLogTech" name="creaLogTech" required="required"><br/><br/>
 <label>Mot de passe</label>
-<input type="password" for="CreaPwdTech" name="CreaPwdTech" required="required"><br/><br/>
-<select for="IdService" name="Idservice" required="required">
+<input type="password" for="CreaPwdTech" name="creaPwdTech" required="required"><br/><br/>
+<select for="idService" name="idservice" required="required">
   <option selected>Selectionner le service d'affectation</option>
   <option value="1">SAV</option>
   <option value="2">HOTLINE</option>

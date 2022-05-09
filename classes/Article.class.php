@@ -3,11 +3,11 @@
 class article {
 
   /* Il définit les variables qui seront utilisées dans la classe. */
-  private $IdArticle;
-  private $NomArticle;
-  private $StockPhysiqueArticle;
-  private $StockRebusArticle;
-  private $StockSAVArticle;
+  private $idArticle;
+  private $nomArticle;
+  private $stockPhysiqueArticle;
+  private $stockRebusArticle;
+  private $stockSAVArticle;
 
  /**
   * 
@@ -18,53 +18,53 @@ class article {
   * @param int StockRebusArticle Le nombre d'articles qui sont cassés et ne peuvent pas être vendus.
   * @param int StockSAVArticle Le nombre d'articles dans le SAV
   */
-  public function __construct(int $IdArticle, string $NomArticle, int $StockPhysiqueArticle, int $StockRebusArticle, int $StockSAVArticle) {
-      $this->setidClient($IdArticle);
-      $this->setNomclient($NomArticle);
-      $this->setPrénomClient($StockPhysiqueArticle);
-      $this->setStockPhysiqueArticle($StockPhysiqueArticle);
-      $this->setStockRebusArticle($StockRebusArticle);
-      $this->setStockSAVArticle($StockSAVArticle);
+  public function __construct(int $idArticle, string $nomArticle, int $stockPhysiqueArticle, int $stockRebusArticle, int $stockSAVArticle) {
+      $this->setidClient($idArticle);
+      $this->setNomclient($nomArticle);
+      $this->setPrénomClient($stockPhysiqueArticle);
+      $this->setStockPhysiqueArticle($stockPhysiqueArticle);
+      $this->setStockRebusArticle($stockRebusArticle);
+      $this->setStockSAVArticle($stockSAVArticle);
   }
 
     private function getIdArticle() {
-        return $this->IdArticle;
+        return $this->idArticle;
     }
 
     private function setIdArticle() {
-        $this->IdArticle = $IdArticle;
+        $this->idArticle = $idArticle;
     }
 
     private function getNomArticle() {
-        return $this->NomArticle;
+        return $this->nomArticle;
     }
 
     private function setNomArticle() {
-        $this->NomArticle = $NomArticle;
+        $this->nomArticle = $nomArticle;
     }
 
     private function getStockPhysiqueArticle() {
-        return $this->StockPhysiqueArticle;
+        return $this->stockPhysiqueArticle;
     }
     
     private function setStockPhysiqueArticle() {
-        $this->StockPhysiqueArticle = $StockPhysiqueArticle;
+        $this->stockPhysiqueArticle = $stockPhysiqueArticle;
     }
 
     private function getStockRebusArticle() {
-        return $this->StockRebusArticle;
+        return $this->stockRebusArticle;
     }
 
     private function setStockRebusArticle() {
-        $this->StockRebusArticle = $StockRebusArticle;
+        $this->stockRebusArticle = $stockRebusArticle;
     }
     
     private function getStockSAVArticle() {
-        return $this->StockSAVArticle;
+        return $this->stockSAVArticle;
     }
 
     private function setStockSAVArticle() {
-        $this->StockSAVArticle = $StockSAVArticle;
+        $this->stockSAVArticle = $stockSAVArticle;
     }
 
 

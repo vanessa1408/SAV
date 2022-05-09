@@ -1,5 +1,5 @@
 <?php
-    //commentaire inutile
+//commentaire inutile
         session_start();
 
             require_once("modeles/DbSav.class.php");
@@ -39,29 +39,29 @@
             if(isset($_POST['nomClient'])){
                 $nom = $_POST["nomClient"];
             }
-            if(isset($_POST['Ncmd'])){
-                $numCMD = $_POST['Ncmd'];
+            if(isset($_POST['ncmd'])){
+                $numCMD = $_POST['ncmd'];
             }
             if(isset($_POST['refArticle'])){
                 $numArt = $_POST['refArticle'];
             }
-            if(isset($_GET['IdTypeDossier'])){
-                $IdTypeDossier =$_GET['IdTypeDossier'];
+            if(isset($_GET['idTypeDossier'])){
+                $idTypeDossier =$_GET['idTypeDossier'];
             }
-            if(isset($_GET['IdTypeInter'])){
-                $IdTypeInter =$_GET['IdTypeInter'];
+            if(isset($_GET['idTypeInter'])){
+                $idTypeInter =$_GET['idTypeInter'];
             }
-            if(isset($_GET['IdTechnicien'])){
-                $IdTechnicien =$_GET['IdTechnicien'];
+            if(isset($_GET['idTechnicien'])){
+                $idTechnicien =$_GET['idTechnicien'];
             } 
             if(isset($_GET['idCommande'])){
-                $IdCommande =$_GET['idCommande'];
+                $idCommande =$_GET['idCommande'];
             } 
             if(isset($_POST['codePostal'])){
-                $CPclient = $_POST["codePostal"];
+                $cPclient = $_POST["codePostal"];
             }
-            if(isset($_GET['IdClient'])){
-                $id = $_GET['IdClient'];
+            if(isset($_GET['idClient'])){
+                $id = $_GET['idClient'];
             }
             if(isset($_SESSION['user'])){
                 $login = $_SESSION['user'];
@@ -72,8 +72,8 @@
 
             } 
 
-            if(isset($_GET['IdCommande'])){
-                $idcmd = $_GET['IdCommande'];
+            if(isset($_GET['idCommande'])){
+                $idcmd = $_GET['idCommande'];
             }
             if(isset($_POST['login'])){
                 $user = $_POST['login'];
@@ -190,7 +190,7 @@
                     require ('vues/view_footer.php');
                 break;
                 case 'rechercheMaj' :
-                    $affichage = $_POST['nomClient']." ".$_POST['Ncmd']." ".$_POST['refArticle']
+                    $affichage = $_POST['nomClient']." ".$_POST['ncmd']." ".$_POST['refArticle']
                     .$_POST['codePostal'];
                     if ($nom <> ""){
                         $resultatNom = Recherche_Dossier::getListClients($nom);
@@ -201,8 +201,8 @@
                     elseif ($numArt <> ""){
                         $resultatArt = Recherche_Dossier::getArticle($numArt); 
                     }
-                    elseif ($CPclient <> ""){
-                        $resultatCP = Recherche_Dossier::getCodepostal($CPclient);
+                    elseif ($cPclient <> ""){
+                        $resultatCP = Recherche_Dossier::getCodepostal($cPclient);
                     }
                     require ('vues/view_header.php');
                     require ('vues/view_nav.php');
@@ -211,7 +211,7 @@
                     break;
                 case 'afficheClient' :
                     
-                if (isset($_GET['IdClient'])){
+                if (isset($_GET['idClient'])){
                         $donnee = ClientMgr::getInfoClient($id);
                     }
                     else {
@@ -234,11 +234,11 @@
                     break;
 
                 case 'afficheCMD' :
-                    if (isset($_GET['IdCommande'])){
+                    if (isset($_GET['idCommande'])){
                             $dossier = DetailsCommandeMgr::getInfoCommande($idcmd);
                             $contenu = DetailsCommandeMgr::getInfoCommande($idcmd);
-                            $TypInter = TicketMgr::getTypeDossier();
-                            $TypMotif = TicketMgr::getMotif();
+                            $typInter = TicketMgr::getTypeDossier();
+                            $typMotif = TicketMgr::getMotif();
                     }   
                         require ('vues/view_header.php');
                         require ('vues/view_nav_modal.php');
@@ -293,11 +293,11 @@
                     require ('vues/view_footer.php');
                     break;
                 case 'affTechnicien':
-                    $IdTechnicien = $_GET['IdTechnicien'];
+                    $idTechnicien = $_GET['idTechnicien'];
                     $modeobjet = PDO::FETCH_OBJ;
-                    $infosTechnicien=Aff_Infos_Technicien::getProfilTechnicien($IdTechnicien);
-                    if (isset($_GET['IdTechnicien'])){
-                        $donnee = Aff_Infos_Technicien::getProfilTechnicien($IdTechnicien);
+                    $infosTechnicien=Aff_Infos_Technicien::getProfilTechnicien($idTechnicien);
+                    if (isset($_GET['idTechnicien'])){
+                        $donnee = Aff_Infos_Technicien::getProfilTechnicien($idTechnicien);
                     }
                     require ('vues/view_header.php');
                     require ('vues/view_profilTechnicien.php');
@@ -338,7 +338,7 @@
                     require ('vues/view_footer.php');
                     break;
                 case 'verifSuppTech' : 
-                    $IdTechSupp = $_POST['IdTechSupp'];
+                    $idTechSupp = $_POST['idTechSupp'];
                     $action = TechniciensMgr::suppTech();
                 case 'suppTechMAJ1' : 
                     require ('vues/view_header.php');
@@ -351,11 +351,11 @@
                     require ('vues/view_footer.php');
                     break;
                 case 'recapTicket' :
-                    $IdCommande = $_GET['idCommande'];
-                    $IdTypeDossier = $_GET['IdTypeDossier'];
-                    $IdTypeInter = $_GET['IdTypeInter'];
-                    $IdTechnicien = $_GET['IdTechnicien'];
-                $creaTicket = TicketMgr::creaTicket($IdTypeDossier, $IdTypeInter, $IdCommande, $IdTechnicien);
+                    $idCommande = $_GET['idCommande'];
+                    $idTypeDossier = $_GET['idTypeDossier'];
+                    $idTypeInter = $_GET['idTypeInter'];
+                    $idTechnicien = $_GET['idTechnicien'];
+                $creaTicket = TicketMgr::creaTicket($idTypeDossier, $idTypeInter, $idCommande, $idTechnicien);
                 require ('vues/view_header.php');
                 require ('vues/view_nav_modal.php');
                 require ('vues/view_ticketMaj.php');

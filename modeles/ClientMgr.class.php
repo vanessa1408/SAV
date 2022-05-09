@@ -9,7 +9,8 @@ class ClientMgr{
         FROM `client` 
         LEFT JOIN commande ON client.IdClient = commande.IdClient
         JOIN adresse ON client.IdClient = adresse.IdClient 
-        WHERE client.IdClient = '$id'");
+        WHERE client.IdClient = '$id'
+        GROUP BY client.IdClient, client.NomClient, client.PrénomClient, adresse.AdresseClient, adresse.VilleClient, adresse.CPClient");
         $tab = $resultat->fetchAll();
         return $tab;
     }
@@ -52,16 +53,31 @@ class ClientMgr{
 
     public static function updateInfosClient(int $id, string $nom, string $prenom){
     // Préparation de la requête SQL
-    $sql="UPDATE client SET NomClient='$nom',PrénomClient='$prenom' WHERE IdClient=$id";
-    // Connexion
-    $connexion = DbSav::getConnexion()->query($sql);
+        $msg ="";
+        if(strlen($nom)==0){
+            $msg = ("Le champs nom est obligatoire !");
+        }
+        if(strlen($prenom)==0){
+            $msg = ("Le champs prénom est obligatoire !");
+        } else {
+            $sql="UPDATE client SET NomClient='$nom',PrénomClient='$prenom' WHERE IdClient=$id";
+            // Connexion
+            $connexion = DbSav::getConnexion()->query($sql);
+        }
+    echo $msg;
     }
 
     public static function updateAdressByIdClient(int $id, string $adresse, string $cp, string $ville){
         // Préparation de la requête SQL
+        $msg ="";
+        if (preg_match('#^[0-9]{5}$#',$cp)){
         $sql="UPDATE `adresse` SET `AdresseClient`='$adresse',`CPClient`='$cp',`VilleClient`='$ville' WHERE IdClient=$id";
         // Connexion
         $connexion = DbSav::getConnexion()->query($sql);
+        $msg = "Modifications enregistrées !"; 
+        } else {
+            $msg = "Code postal non valide !"; 
         }
-
+        echo $msg;
+    }
 }

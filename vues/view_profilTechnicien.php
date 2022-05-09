@@ -2,21 +2,21 @@
 <br/>
 <?php
 foreach ($infosTechnicien as $key => $tinfo){
-        $IdTechnicien = $tinfo [0];
-        $NomTechnicien = $tinfo[1];
-        $PrenomTechnicien = $tinfo[2];
-        $MailTechnicien = $tinfo[3];
-        $LoginTechnicien = $tinfo[4];
-        $PasswordTechnicien = $tinfo[5];
-        $IdServiceTechnicien = $tinfo[6];
-                if ($IdServiceTechnicien == 1){
-                        $LibService = "SAV";
+        $idTechnicien = $tinfo [0];
+        $nomTechnicien = $tinfo[1];
+        $prenomTechnicien = $tinfo[2];
+        $mailTechnicien = $tinfo[3];
+        $loginTechnicien = $tinfo[4];
+        $passwordTechnicien = $tinfo[5];
+        $idServiceTechnicien = $tinfo[6];
+                if ($idServiceTechnicien == 1){
+                        $libService = "SAV";
                 } 
-                if ($IdServiceTechnicien == 2){
-                        $LibService = "HOTLINE";
+                if ($idServiceTechnicien == 2){
+                        $libService = "HOTLINE";
                 } 
-                if ($IdServiceTechnicien == 3){
-                        $LibService = "ADMIN";
+                if ($idServiceTechnicien == 3){
+                        $libService = "ADMIN";
                 } 
     }
   ?>
@@ -26,30 +26,30 @@ foreach ($infosTechnicien as $key => $tinfo){
   <div class="card-body">
     <h5 class="card-title">Détail du profil</h5>
     <p class="card-text">
-            Id. Technicien : <?php echo($IdTechnicien);?><br/>
-            <input type="hidden" name="IdTechSelect" value="<?php echo $IdTechnicien?>">
-            Prénom : <?php echo($PrenomTechnicien);?><br/>
-       Nom : <?php echo($NomTechnicien);?><br/>
-        Mail : <?php echo($MailTechnicien);?><br/>
-        Login : <?php echo($LoginTechnicien);?><br/>
-        Password : <?php echo($PasswordTechnicien);?><br/>
-        Service :  <?php echo($LibService);?><br/>
+            Id. Technicien : <?php echo($idTechnicien);?><br/>
+            <input type="hidden" name="idTechSelect" value="<?php echo $idTechnicien?>">
+            Prénom : <?php echo($prenomTechnicien);?><br/>
+       Nom : <?php echo($nomTechnicien);?><br/>
+        Mail : <?php echo($mailTechnicien);?><br/>
+        Login : <?php echo($loginTechnicien);?><br/>
+        Password : <?php echo($passwordTechnicien);?><br/>
+        Service :  <?php echo($libService);?><br/>
 </p>
 <!--
 <input type="submit" name="modifTech" class="btn btn-primary" value="Modifier">
 <input type="submit" name="deleteTech" class="btn btn-danger" value="Supprimer">
 -->   
 <?php
-        if ($IdServiceTechnicien == 3){
+        if ($idServiceTechnicien == 3){
                 if((isset($_POST['modifTech']) || ($_POST['deleteTech']))){
                         echo "Cet utilisateur ne peut pas être modifié ou supprimé";
                 }
         } else {
                 if(isset($_POST['modifTech'])){
-                        $_POST['IdTechModif'] = $IdTechnicien;
+                        $_POST['idTechModif'] = $idTechnicien;
                         header('location:index.php?action=modifTech');
                 } else if (isset($_POST['deleteTech'])){
-                        $_POST['IdTechSupp'] = $IdTechnicien;
+                        $_POST['idTechSupp'] = $idTechnicien;
                         header('location:index.php?action=suppTech');
                 }
         }

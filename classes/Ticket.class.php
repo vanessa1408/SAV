@@ -1,108 +1,108 @@
 <?php
 
 class Ticket {
-    private $IdTicket;
-    private $DateAppelClient;
-    private $DatePEC;
-    private $DateFermTicket;
-    private $Motif;
-    private $Observation;
-    private $IdTypeDossier;
-    private $IdTypeInter;
-    private $IdCommande;
-    private $IdTechnicien;
+    private $idTicket;
+    private $dateAppelClient;
+    private $datePEC;
+    private $dateFermTicket;
+    private $motif;
+    private $observation;
+    private $idTypeDossier;
+    private $idTypeInter;
+    private $idCommande;
+    private $idTechnicien;
 
-    public function __construct($IdTicket, $DateAppelClient, $DatePEC, $DateFermTicket, $Motif, $Observation,$IdTypeDossier, $IdTypeInter, $IdCommande, $IdTechnicien){
-            $this->setIdTicket($IdTicket);
-            $this->setDateAppelClient($DateAppelClient);
-            $this->setDatePEC($DatePEC);
-            $this->setDateFermTicket($DateFermTicket);
-            $this->setMotif($Motif);
-            $this->setObservation($Observation);
-            $this->setIdTypeDossier($IdTypeDossier);
-            $this->setIdTypeInter($IdTypeInter);
-            $this->setIdCommande($IdCommande);
-            $this->setIdTechnicien($IdTechnicien);
+    public function __construct($idTicket, $dateAppelClient, $datePEC, $dateFermTicket, $motif, $observation,$idTypeDossier, $idTypeInter, $idCommande, $idTechnicien){
+            $this->setIdTicket($idTicket);
+            $this->setDateAppelClient($dateAppelClient);
+            $this->setDatePEC($datePEC);
+            $this->setDateFermTicket($dateFermTicket);
+            $this->setMotif($motif);
+            $this->setObservation($observation);
+            $this->setIdTypeDossier($idTypeDossier);
+            $this->setIdTypeInter($idTypeInter);
+            $this->setIdCommande($idCommande);
+            $this->setIdTechnicien($idTechnicien);
     }
 
     public function getIdTicket() {
-        return $this->IdTicket;
+        return $this->idTicket;
     }
 
     private function setIdTicket() {
-        $this->IdTicket = $IdTicket;
+        $this->idTicket = $idTicket;
     }
 
     public function getDateAppelClient() {
-        return $this->$DateAppelClient;
+        return $this->$dateAppelClient;
     }
 
     private function setDateAppelClient() {
-        $this->DateAppelClient = $DateAppelClient;
+        $this->dateAppelClient = $dateAppelClient;
     }
 
     public function getDatePEC() {
-        return $this->DatePEC;
+        return $this->datePEC;
     }
 
     private function setDatePEC() {
-        $this->DatePEC = $DatePEC;
+        $this->datePEC = $datePEC;
     }
 
     public function getDateFermTicket() {
-        return $this->DateFermTicket;
+        return $this->dateFermTicket;
     }
 
     private function setDateFermTicket() {
-        $this->DateFermTicket = $DateFermTicket;
+        $this->dateFermTicket = $dateFermTicket;
     }
 
     public function getMotif() {
-        return $this->Motif;
+        return $this->motif;
     }
 
     private function setIMotif() {
-        $this->Motif = $Motif;
+        $this->motif = $motif;
     }
 
     public function getObservation() {
-        return $this->Observation;
+        return $this->observation;
     }
 
     private function setObservation() {
-        $this->Observation = $Observation;
+        $this->observation = $observation;
     }
 
     public function getIdTypeDossier() {
-        return $this->IdTypeDossier;
+        return $this->idTypeDossier;
     }
 
     private function setIdTypeDossier() {
-        $this->IdTypeDossier = $IdTypeDossier;
+        $this->idTypeDossier = $idTypeDossier;
     }
 
     public function getIdTypeInter() {
-        return $this->IdTypeInter;
+        return $this->idTypeInter;
     }
 
     private function setIdTypeInter() {
-        $this->IdTypeInter = $IdTypeInter;
+        $this->idTypeInter = $idTypeInter;
     }
 
     public function getIdCommande() {
-        return $this->IdCommande;
+        return $this->idCommande;
     }
 
     private function setIdCommande() {
-        $this->IdCommande = $IdCommande;
+        $this->idCommande = $idCommande;
     }
 
     public function getIdTechnicien() {
-        return $this->IdTechnicien;
+        return $this->idTechnicien;
     }
 
     private function setIdTechnicien() {
-        $this->IdTechnicien = $IdTechnicien;
+        $this->idTechnicien = $idTechnicien;
     }
 
     

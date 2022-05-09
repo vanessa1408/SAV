@@ -2,47 +2,47 @@
 
 class Technicien {
 
-    private $IdTechnicien;
-    private $NomTechnicien;
-    private $PrenomTechnicien;
-    private $MailTechnicien;
+    private $idTechnicien;
+    private $nomTechnicien;
+    private $prenomTechnicien;
+    private $mailTechnicien;
 
-    public function __construct(int $IdTechnicien, string $NomTechnicien, string $PrénomClient, string $MailTechnicien) {
-        $this->setIdTechnicien($IdTechnicien);
-        $this->setNomTechnicien($NomTechnicien);
-        $this->setPrénomTechnicien($PrenomTechnicien);
-        $this->setMailTechnicien($MailTechnicien);
+    public function __construct(int $idTechnicien, string $nomTechnicien, string $prenomClient, string $mailTechnicien) {
+        $this->setIdTechnicien($idTechnicien);
+        $this->setNomTechnicien($nomTechnicien);
+        $this->setPrénomTechnicien($prenomTechnicien);
+        $this->setMailTechnicien($mailTechnicien);
     }
 
     public function getIdTechnicien() {
-        return $this->IdTechnicien;
+        return $this->idTechnicien;
     }
 
     private function setIdTechnicien() {
-        $this->IdTechnicien = $IdTechnicien;
+        $this->idTechnicien = $idTechnicien;
     }
 
     public function getNomTechnicien() {
-        return $this->NomTechnicien;
+        return $this->nomTechnicien;
     }
 
     private function setNomTechnicien() {
-        $this->NomTechnicien = $NomTechnicien;
+        $this->nomTechnicien = $nomTechnicien;
     }
 
     public function getPrenomTechnicien() {
-        return $this->PrenomTechnicien;
+        return $this->prenomTechnicien;
     }
     
     private function setPrenomTechnicien() {
-        $this->PrénomClient = $PrenomTechnicien;
+        $this->prenomClient = $prenomTechnicien;
     }
 
     private function getMailTechnicien() {
-        return $this->MailTechnicien;
+        return $this->mailTechnicien;
     }
 
     private function setMailTechnicien() {
-        $this->MailTechnicien;
+        $this->mailTechnicien;
     }
 }

@@ -19,12 +19,12 @@
                 <?php 
                    
                         foreach ($resultatNomTechnicien as $key => $tinfo){
-                            $IdTechnicien = $tinfo [0];
-                            $NomTechnicien = $tinfo[1];
-                            $PrenomTechnicien = $tinfo[2];
-                            $MailTechnicien = $tinfo[3];
-                            echo '<a href="index.php?action=affTechnicien&IdTechnicien='.$IdTechnicien.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>' 
-                            . $NomTechnicien . " " . $PrenomTechnicien . " ".  $MailTechnicien ." " .'<p class="type-dossier"></p></a>';
+                            $idTechnicien = $tinfo [0];
+                            $nomTechnicien = $tinfo[1];
+                            $prenomTechnicien = $tinfo[2];
+                            $mailTechnicien = $tinfo[3];
+                            echo '<a href="index.php?action=affTechnicien&idTechnicien='.$idTechnicien.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>' 
+                            . $nomTechnicien . " " . $prenomTechnicien . " ".  $mailTechnicien ." " .'<p class="type-dossier"></p></a>';
                         }
                     
             ?> 

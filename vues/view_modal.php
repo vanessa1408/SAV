@@ -7,7 +7,7 @@
       </div>
         <div class="modal-body">
             <form role="form" class="was-validated" 
-              action="index.php?action=recapTicket&idCommande=<?php echo $IdCommande ?>&IdTypeDossier=<?php echo $IdTypeDossier?>&IdTypeInter=<?php echo $IdTypeInter ?>&IdTechnicien=<?php echo $IdTechnicien ?>"
+              action="index.php?action=recapTicket&idCommande=<?php echo $idCommande ?>&idTypeDossier=<?php echo $idTypeDossier?>&idTypeInter=<?php echo $idTypeInter ?>&idTechnicien=<?php echo $idTechnicien ?>"
               method="POST">
                     <div class="form-group">
                         <label for="nomClient"><span class="bi bi-file-person"></span> Nom du client</label>

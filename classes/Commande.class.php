@@ -2,58 +2,58 @@
 
 class commande {
 
-    private $IdCommande;
-    private $DateCommande;
-    private $StatutCommande;
-    private $IdClient;
-    private $IdFacture;
+    private $idCommande;
+    private $dateCommande;
+    private $statutCommande;
+    private $idClient;
+    private $idFacture;
 
-    private function __construct(int $IdCommande, DateTime $DateCommande, string $StatutCommande, int $IdClient, int $IdFacture) {
-        $this->setidClient($IdCommande);
-        $this->setNomclient($DateCommande);
-        $this->setPrénomClient($PrénomClient);
-        $this->setIdClient($IdClient);
-        $this->setIdFacture($IdFacture);
+    private function __construct(int $idCommande, DateTime $dateCommande, string $statutCommande, int $idClient, int $idFacture) {
+        $this->setidClient($idCommande);
+        $this->setNomclient($dateCommande);
+        $this->setPrenomClient($prenomClient);
+        $this->setIdClient($idClient);
+        $this->setIdFacture($idFacture);
     }
 
     private function getIdCommande() {
-        return $this->IdCommande;
+        return $this->idCommande;
     }
 
     private function setIdCommande() {
-        $this->IdCommande = $IdCommande;
+        $this->idCommande = $idCommande;
     }
 
     private function getDateCommande() {
-        return $this->DateCommande;
+        return $this->dateCommande;
     }
 
     private function setDateCommande() {
-        $this->DateCommande = $DateCommande;
+        $this->dateCommande = $dateCommande;
     }
 
     private function getStatutCommande() {
-        return $this->StatutCommande;
+        return $this->statutCommande;
     }
     
     private function setStatutCommande() {
-        $this->StatutCommande = $StatutCommande;
+        $this->statutCommande = $statutCommande;
     }
 
     private function getIdClient(){
-        return $this->IdClient;
+        return $this->idClient;
     }
 
     private function setIdClient(){
-        $this->IdClient = $IdClient;
+        $this->idClient = $idClient;
     }
 
     private function getIdFacture(){
-        return $this->IdFacture;
+        return $this->idFacture;
     }
 
     private function setIdFacture(){
-        $this->IdFacture = $IdFacture;
+        $this->idFacture = $idFacture;
     }
 
 

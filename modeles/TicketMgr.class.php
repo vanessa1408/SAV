@@ -145,10 +145,16 @@
 
        public static function createDiagnostic(string $libelleDiag, int $idTicket, string $date = null) {
         // Préparation de la requête SQL
-        $sql="INSERT INTO diagnostic(LibDiagnostic, IdTicket, DateDiag) VALUES ('$libelleDiag',$idTicket,now())";
-        // Connexion
-        $connexion = DbSav::getConnexion()->query($sql);
-
+        $msg="";
+        if(strlen($libelleDiag)>1){
+            $sql="INSERT INTO diagnostic(LibDiagnostic, IdTicket, DateDiag) VALUES ('$libelleDiag',$idTicket,now())";
+            // Connexion
+            $connexion = DbSav::getConnexion()->query($sql);
+            $msg = "Diagnotic ajouté !";
+        } else {
+            $msg = "Impossible d'ajouter un diagnostic vide !";
+        }
+            echo $msg;
         }
 
         /**
@@ -164,13 +170,14 @@
         * @return void
         */
         public static function updateInfosTicket(int $idTicket, string $dateCrea, int $numCmd, string $statCmd, string $datePEC, string $motif, string $obs){
+               
             $sql="UPDATE `ticketsav` SET `DateAppelClient`='$dateCrea',`DatePEC`='$datePEC',`Motif`='$motif',`Observations`='$obs',`IdCommande`='$numCmd' WHERE `IdTicket`=$idTicket";
             // Connexion
             $connexion = DbSav::getConnexion()->query($sql);
 
         }
 
-/**
+       /**
        * Il obtient le type de dossier de la base de données.
        */
       public static function getTypeDossier() {
@@ -193,19 +200,19 @@
   /**
    * Il crée un ticket dans la base de données.
    * 
-   * @param IdTypeDossier 
-   * @param IdTypeInter 
-   * @param IdCommande Le numéro de commande
+   * @param idTypeDossier 
+   * @param idTypeInter 
+   * @param idCommande Le numéro de commande
    * @param idTechnicien l'identifiant du technicien qui est connecté
    * @param date la date de l'appel
    * 
    * @return Le résultat de la requête.
    */
-   public static function creaTicket($IdTypeDossier, $IdTypeInter, $IdCommande, $idTechnicien, $date=null) {
+   public static function creaTicket($idTypeDossier, $idTypeInter, $idCommande, $idTechnicien, $date=null) {
         $connexion = DbSav::getConnexion();
         $resultat = $connexion->query("INSERT INTO `ticketsav`(`IdTypeDossier`, `IDTypeInter`, 
                                                     `IdCommande`, `IdTechnicien`,`DateAppelClient`) 
-                                                    VALUES ($IdTypeDossier,$IdTypeInter,$IdCommande,$idTechnicien,now())");
+                                                    VALUES ($idTypeDossier,$idTypeInter,$idCommande,$idTechnicien,now())");
         $resultat->execute(); 
         return $resultat;
    }

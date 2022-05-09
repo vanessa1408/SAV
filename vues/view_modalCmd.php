@@ -7,24 +7,24 @@
       </div>
         <div class="modal-body" >
             <form role="form" class="was-validated"
-                   action="index.php?action=recapTicket&idCommande=<?php echo $IdCommande ?>&IdTypeDossier=<?php echo $IdTypeDossier?>&IdTypeInter=<?php echo $IdTypeInter ?>&IdTechnicien=<?php echo $IdTechnicien ?>"
+                   action="index.php?action=recapTicket&idCommande=<?php echo $idCommande ?>&idTypeDossier=<?php echo $idTypeDossier?>&idTypeInter=<?php echo $idTypeInter ?>&idTechnicien=<?php echo $idTechnicien ?>"
                    method="POST"  >
                     <div class="form-group">
                         <label for="nomClient"><span class="bi bi-file-person"></span> Nom du client</label>
-                        <input type="text" class="form-control is-valid" name="nomClient" required="required" disabled="disabled" value="<?php echo $NomCLient," ", $PrenomClient; ?>">
+                        <input type="text" class="form-control is-valid" name="nomClient" required="required" disabled="disabled" value="<?php echo $nomCLient," ", $prenomClient; ?>">
                     </div>
                     <div class="form-group">
                         <label for="numFacture"><span class="bi bi-receipt"></span> N° de facture d'achat</label>
-                        <input type="text" class="form-control is-valid" name="numFacture" required="required" disabled="disabled" value="<?php echo $IdFacture; ?>">
+                        <input type="text" class="form-control is-valid" name="numFacture" required="required" disabled="disabled" value="<?php echo $idFacture; ?>">
                     </div>
                     <div class="form-group">
                         <label for="start"><span class="bi bi-calendar3"></span> Date d'achat</label>
                         <br>
-                        <input type="date" class="form-control is-valid" name="start" name="trip-start" disabled="disabled" value="<?php echo $DateFacture; ?>">
+                        <input type="date" class="form-control is-valid" name="start" name="trip-start" disabled="disabled" value="<?php echo $dateFacture; ?>">
                     </div>
                     <div class="form-group">
                         <label for="refCommande"><span class="bi bi-upc-scan"></span> Reference de la commande</label>
-                        <input type="text" class="form-control is-valid" name="refCommande" required="required" disabled="disabled" value="<?php echo $IdCommande; ?>">
+                        <input type="text" class="form-control is-valid" name="refCommande" required="required" disabled="disabled" value="<?php echo $idCommande; ?>">
                     </div>
                     <div class="form-group">
                         <label for="date_open_ticket"><span class="bi bi-calendar3"></span> Date d'ouverture du ticket</label>
@@ -36,12 +36,12 @@
                         <select class="form-select" required name="typeDoss">
                           <option selected disabled value="">-- Motif d'intervention --</option>
                           <?php
-                          if(isset($TypMotif)){
-                            foreach ($TypMotif as $key=>$tMotif)
+                          if(isset($typMotif)){
+                            foreach ($typMotif as $key=>$tMotif)
                             {
-                                $IdTypeDossier = $tMotif[0];
-                                $LibType = $tMotif[1];
-                              echo '<option value="1">'.$IdTypeDossier.' '.$LibType.'</option>';
+                                $idTypeDossier = $tMotif[0];
+                                $libType = $tMotif[1];
+                              echo '<option value="1">'.$idTypeDossier.' '.$libType.'</option>';
                               
                             }
                       }
@@ -54,12 +54,12 @@
                         <select class="form-select" required name="interPrevu">
                         <option selected disabled value="">-- Type d intervention --</option>
                         <?php
-                        if(isset($TypInter)){
-                            foreach ($TypInter as $key=>$tTypInter)
+                        if(isset($typInter)){
+                            foreach ($typInter as $key=>$tTypInter)
                             {
-                                $IDTypeInter = $tTypInter[0];
-                                $LibTypeInter = $tTypInter[1];
-                              echo '<option value="1">'.$IDTypeInter.'  '.$LibTypeInter.'</option>';
+                                $iDTypeInter = $tTypInter[0];
+                                $libTypeInter = $tTypInter[1];
+                              echo '<option value="1">'.$iDTypeInter.'  '.$libTypeInter.'</option>';
                             }
                         }
                         
@@ -73,7 +73,7 @@
                     </div>
                     <div class="form-group">
                         <label for="nomTech"><span class="bi bi-file-person"></span> Technicien</label>
-                        <input type="text" class="form-control is-valid" name="nomTech" required="required" disabled="disabled" value="<?php echo $NomTechnicien," ", $PrenomTechnicien," Identifiant : ", $IdTechnicien; ?>">
+                        <input type="text" class="form-control is-valid" name="nomTech" required="required" disabled="disabled" value="<?php echo $nomTechnicien," ", $prenomTechnicien," Identifiant : ", $idTechnicien; ?>">
                     </div>
                     </br>  
         </div>

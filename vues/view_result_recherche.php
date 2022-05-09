@@ -9,58 +9,58 @@
                 <?php 
                     if (strlen($nom) > 0){
                         foreach ($resultatNom as $key => $tinfo){
-                            $IdClient = $tinfo [0];
-                            $NomClient = $tinfo[1];
-                            $PrenomClient = $tinfo[2];
-                            echo '<a href="index.php?action=afficheClient&IdClient='.$IdClient.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>' 
-                            . $NomClient . " " . $PrenomClient . " ".'<p class="type-dossier"></p></a>';
+                            $idClient = $tinfo [0];
+                            $nomClient = $tinfo[1];
+                            $prenomClient = $tinfo[2];
+                            echo '<a href="index.php?action=afficheClient&idClient='.$idClient.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>' 
+                            . $nomClient . " " . $prenomClient . " ".'<p class="type-dossier"></p></a>';
                         }
                     } elseif (strlen($numCMD > 0)) {
                         foreach ($resultatCMD as $keyCmd => $tCMD){
-                            $IdCommande = $tCMD [0];
-                            $DateCommande = $tCMD [1];
-                            $StatutCommande = $tCMD [2];
-                            $IdClient = $tCMD [3];
-                            $IdFacture = $tCMD [4];
-                            $NomClient = $tCMD [5];
-                            $PrénomClient = $tCMD [6];
-                            echo '<a href="index.php?action=afficheClient&IdClient='.$IdClient.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
-                            "N° Commande : ". $IdCommande . " -- Date de commande : " . $DateCommande .
-                            " -- Statut : ". $StatutCommande. "   // Commandé par ". $NomClient. " " .$PrénomClient." ".
+                            $idCommande = $tCMD [0];
+                            $dateCommande = $tCMD [1];
+                            $statutCommande = $tCMD [2];
+                            $idClient = $tCMD [3];
+                            $idFacture = $tCMD [4];
+                            $nomClient = $tCMD [5];
+                            $prenomClient = $tCMD [6];
+                            echo '<a href="index.php?action=afficheClient&idClient='.$idClient.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
+                            "N° Commande : ". $idCommande . " -- Date de commande : " . $dateCommande .
+                            " -- Statut : ". $statutCommande. "   // Commandé par ". $nomClient. " " .$prenomClient." ".
                             '<p class="type-dossier"></p></a>';
                         }
                     } elseif (strlen($numArt > 0)) {
                         foreach ($resultatArt as $keyArt => $tArt){
-                            $IdCommande  = $tArt [0];
-                            $DateCommande = $tArt [1];
-                            $StatutCommande = $tArt [2];
-                            $IdClient = $tArt [3];
-                            $IdFacture = $tArt [4];
-                            $IdArticle = $tArt [5];
-                            $NomArticle = $tArt [6];
-                            $StockPhysiqueArticle = $tArt [7];
-                            $StockRebusArticle = $tArt [8];
-                            $StockSAVArticle = $tArt [9];
-                            $QteCOmART = $tArt [10];
-                            $Garantie = $tArt [11];
-                            $QteExpArt = $tArt [12];
-                            $NomClient = $tArt [13];
-                            $PrénomClient = $tArt [14];
-                            echo '<a href="index.php?action=afficheClient&IdCommande='.$IdCommande.'&IdClient='.$IdClient.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
-                            "Nom de l'article : ". $NomArticle  . " -- Référence : " . $IdArticle . " -- Commande : ". $IdCommande . " // Nom : ". $NomClient. " " . $PrénomClient . " ".
+                            $idCommande  = $tArt [0];
+                            $dateCommande = $tArt [1];
+                            $statutCommande = $tArt [2];
+                            $idClient = $tArt [3];
+                            $idFacture = $tArt [4];
+                            $idArticle = $tArt [5];
+                            $nomArticle = $tArt [6];
+                            $stockPhysiqueArticle = $tArt [7];
+                            $stockRebusArticle = $tArt [8];
+                            $stockSAVArticle = $tArt [9];
+                            $qteCOmART = $tArt [10];
+                            $garantie = $tArt [11];
+                            $qteExpArt = $tArt [12];
+                            $nomClient = $tArt [13];
+                            $prenomClient = $tArt [14];
+                            echo '<a href="index.php?action=afficheClient&idCommande='.$idCommande.'&idClient='.$idClient.'" class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'.
+                            "Nom de l'article : ". $nomArticle  . " -- Référence : " . $idArticle . " -- Commande : ". $idCommande . " // Nom : ". $nomClient. " " . $prenomClient . " ".
                             '<p class="type-dossier"></p></a>';
                         }
-                    } elseif (strlen($CPclient > 0)) {
+                    } elseif (strlen($cPclient > 0)) {
                         foreach ($resultatCP as $keyCPC => $tCPC){
-                            $IdAdresse = $tCPC [0];
-                            $AdresseClient = $tCPC [1];
-                            $CPClient = $tCPC [2];
-                            $VilleClient = $tCPC [3];
-                            $IdClient = $tCPC [4];
-                            $NomClient = $tCPC [5];
-                            $PrénomClient = $tCPC [6];
-                            echo '<a href="index.php?action=afficheClient&IdClient='.$IdClient.'"class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'
-                            .$NomClient . " " . $PrénomClient . " ".'<p class="type-dossier"></p></a>';
+                            $idAdresse = $tCPC [0];
+                            $adresseClient = $tCPC [1];
+                            $cPClient = $tCPC [2];
+                            $villeClient = $tCPC [3];
+                            $idClient = $tCPC [4];
+                            $nomClient = $tCPC [5];
+                            $prenomClient = $tCPC [6];
+                            echo '<a href="index.php?action=afficheClient&idClient='.$idClient.'"class="malist navbar-text list-group-item-action"><i class="bi bi-folder-fill"></i>'
+                            .$nomClient . " " . $prenomClient . " ".'<p class="type-dossier"></p></a>';
                         }
                     }
                     

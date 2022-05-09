@@ -12,7 +12,7 @@ class DetailsCommandeMgr {
      * 
      * @return Un tableau de tableaux.
      */
-    public static function getInfoCommande($Idcmd){
+    public static function getInfoCommande($idcmd){
         $connexion = DbSav::getConnexion();
         $resultat = $connexion->query("SELECT commande.IdCommande, commande.DateCommande, commande.StatutCommande, commande.IdClient, commande.IdFacture,
                                         contenir.IdArticle, contenir.Garantie, contenir.QteCOmART, contenir.QteExpArt,
@@ -31,7 +31,7 @@ class DetailsCommandeMgr {
                                         LEFT JOIN diagnostic ON diagnostic.IdTicket = ticketsav.IdTicket
                                         LEFT JOIN type_dossier ON type_dossier.IdTypeDossier = ticketsav.IdTypeDossier
                                         LEFT JOIN technicien ON technicien.IdTechnicien = ticketsav.IdTechnicien
-                                        WHERE commande.IdCommande = '$Idcmd'");
+                                        WHERE commande.IdCommande = '$idcmd'");
 
         $tab = $resultat->fetchAll();
         return $tab;
@@ -43,9 +43,9 @@ class DetailsCommandeMgr {
     * 
     * @return Un tableau de tableaux.
     */
-    public static function getAllArticle($Idcmd){
+    public static function getAllArticle($idcmd){
         $connexion = DbSav::getConnexion();
-        $resultat = $connexion->query("SELECT contenir.IdArticle, article.NomArticle FROM `contenir` JOIN article ON article.IdArticle = contenir.IdArticle WHERE contenir.IdCommande = '$Idcmd'");
+        $resultat = $connexion->query("SELECT contenir.IdArticle, article.NomArticle FROM `contenir` JOIN article ON article.IdArticle = contenir.IdArticle WHERE contenir.IdCommande = '$idcmd'");
         $tab = $resultat->fetchAll();
         return $tab;
     }

@@ -40,11 +40,11 @@
             return $tab;
         }
         
-        public static function getCodepostal ($CodePostal)
+        public static function getCodepostal ($codePostal)
         {
             $connexion = DbSav::getconnexion();
             $resultat = $connexion->query("SELECT adresse.IdAdresse, adresse.AdresseClient, Adresse.CPClient, Adresse.VilleClient, adresse.IdClient, client.NomClient, client.PrénomClient 
-                                            FROM `adresse` JOIN client ON adresse.IdClient = client.IdClient WHERE CPClient LIKE '$CodePostal'");
+                                            FROM `adresse` JOIN client ON adresse.IdClient = client.IdClient WHERE CPClient LIKE '$codePostal'");
             $tab = $resultat->fetchAll();
             return $tab;
         }
